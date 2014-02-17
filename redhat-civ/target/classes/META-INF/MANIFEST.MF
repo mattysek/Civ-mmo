@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Built-By: Mattysek
+Build-Jdk: 1.7.0_11
+Specification-Title: redhat-civ
+Specification-Version: 1.0-SNAPSHOT
+Specification-Vendor: JBoss Inc.
+Implementation-Title: redhat-civ
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: com.redhat.civ
+Implementation-Vendor: JBoss Inc.
+Created-By: Maven Integration for Eclipse
+

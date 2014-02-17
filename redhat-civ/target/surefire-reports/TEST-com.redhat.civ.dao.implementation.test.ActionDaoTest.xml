@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="11.549" errors="1" skipped="0" tests="1" name="com.redhat.civ.dao.implementation.test.ActionDaoTest">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_11\jre\bin"/>
+    <property name="java.vm.version" value="23.6-b04"/>
+    <property name="user.country.format" value="CZ"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\_Prog\jBoss\_workspace\redhat-civ"/>
+    <property name="java.runtime.version" value="1.7.0_11-b21"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.7.0_11\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\Mattysek\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="classworlds.conf" value="D:\_Prog\jBoss\_workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf6732739722944748825.tmp"/>
+    <property name="sun.jnu.encoding" value="Cp1250"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.7.0_11\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Broadcom\Broadcom 802.11 Network Adapter\Driver;;C:\Program Files\Java\jdk1.7.0_11\bin;D:\_Prog\Android\sdk\ant\bin;C:\Ruby\Ruby193\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\Tools\Binn\;C:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\ruby-1.9.2\bin;C:\Program Files (x86)\git\bin;C:\Program Files (x86)\git\cmd;D:\_Prog\Android\sdk\sdk\platform-tools;D:\_Prog\Android\sdk\sdk\tools;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files (x86)\Windows Kits\8.0\Windows Performance Toolkit\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\OpenVPN\bin;."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\Mattysek"/>
+    <property name="user.timezone" value="Europe/Prague"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="Cp1250"/>
+    <property name="user.name" value="Mattysek"/>
+    <property name="java.class.path" value="/D:/_Prog/jBoss/sdk/studio/configuration/org.eclipse.osgi/bundles/509/1/.cp/jars/plexus-classworlds-2.4.jar"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk1.7.0_11\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Parquillian-jbossas-managed -B test"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="user.language.format" value="cs"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.7.0_11"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.7.0_11\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.7.0_11\jre\lib\resources.jar;C:\Program Files\Java\jdk1.7.0_11\jre\lib\rt.jar;C:\Program Files\Java\jdk1.7.0_11\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.7.0_11\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.7.0_11\jre\lib\jce.jar;C:\Program Files\Java\jdk1.7.0_11\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.7.0_11\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.7.0_11\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="D:\_Prog\jBoss\_workspace\redhat-civ\EMBEDDED"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="maven.bootclasspath" value="/D:/_Prog/jBoss/sdk/studio/configuration/org.eclipse.osgi/bundles/509/1/.cp/jars/plexus-classworlds-2.4.jar"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase time="0" classname="com.redhat.civ.dao.implementation.test.ActionDaoTest" name="com.redhat.civ.dao.implementation.test.ActionDaoTest">
+    <error message="Cannot deploy: fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar" type="org.jboss.arquillian.container.spi.client.container.DeploymentException">org.jboss.arquillian.container.spi.client.container.DeploymentException: Cannot deploy: fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar
+	at org.jboss.as.arquillian.container.ArchiveDeployer.deployInternal(ArchiveDeployer.java:83)
+	at org.jboss.as.arquillian.container.ArchiveDeployer.deployInternal(ArchiveDeployer.java:64)
+	at org.jboss.as.arquillian.container.ArchiveDeployer.deploy(ArchiveDeployer.java:46)
+	at org.jboss.as.arquillian.container.CommonDeployableContainer.deploy(CommonDeployableContainer.java:144)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController$3.call(ContainerDeployController.java:161)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController$3.call(ContainerDeployController.java:128)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController.executeOperation(ContainerDeployController.java:271)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController.deploy(ContainerDeployController.java:127)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:90)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.container.impl.client.container.DeploymentExceptionHandler.verifyExpectedExceptionDuringDeploy(DeploymentExceptionHandler.java:50)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:90)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.container.impl.client.ContainerDeploymentContextHandler.createDeploymentContext(ContainerDeploymentContextHandler.java:78)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:90)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.container.impl.client.ContainerDeploymentContextHandler.createContainerContext(ContainerDeploymentContextHandler.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:90)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController$1.perform(ContainerDeployController.java:95)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController$1.perform(ContainerDeployController.java:80)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController.forEachDeployment(ContainerDeployController.java:263)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController.forEachManagedDeployment(ContainerDeployController.java:239)
+	at org.jboss.arquillian.container.impl.client.container.ContainerDeployController.deployManaged(ContainerDeployController.java:79)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:90)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.core.impl.EventImpl.fire(EventImpl.java:67)
+	at org.jboss.arquillian.container.test.impl.client.ContainerEventController.execute(ContainerEventController.java:101)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:90)
+	at org.jboss.arquillian.core.impl.EventContextImpl.invokeObservers(EventContextImpl.java:99)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:81)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createClassContext(TestContextHandler.java:75)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:90)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.test.impl.TestContextHandler.createSuiteContext(TestContextHandler.java:60)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.jboss.arquillian.core.impl.ObserverImpl.invoke(ObserverImpl.java:90)
+	at org.jboss.arquillian.core.impl.EventContextImpl.proceed(EventContextImpl.java:88)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:135)
+	at org.jboss.arquillian.core.impl.ManagerImpl.fire(ManagerImpl.java:115)
+	at org.jboss.arquillian.test.impl.EventTestRunnerAdaptor.beforeClass(EventTestRunnerAdaptor.java:80)
+	at org.jboss.arquillian.junit.Arquillian$2.evaluate(Arquillian.java:182)
+	at org.jboss.arquillian.junit.Arquillian.multiExecute(Arquillian.java:314)
+	at org.jboss.arquillian.junit.Arquillian.access$100(Arquillian.java:46)
+	at org.jboss.arquillian.junit.Arquillian$3.evaluate(Arquillian.java:199)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
+	at org.jboss.arquillian.junit.Arquillian.run(Arquillian.java:147)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+Caused by: java.lang.Exception: {&quot;JBAS014671: Failed services&quot; =&gt; {&quot;jboss.persistenceunit.\&quot;fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar#mongodbTest\&quot;&quot; =&gt; &quot;org.jboss.msc.service.StartException in service jboss.persistenceunit.\&quot;fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar#mongodbTest\&quot;: javax.persistence.PersistenceException: [PersistenceUnit: mongodbTest] Unable to build EntityManagerFactory
+    Caused by: javax.persistence.PersistenceException: [PersistenceUnit: mongodbTest] Unable to build EntityManagerFactory
+    Caused by: org.hibernate.MappingException: Could not get constructor for org.hibernate.ogm.persister.SingleTableOgmEntityPersister
+    Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.ogm.datastore.spi.DatastoreProvider]
+    Caused by: org.hibernate.HibernateException: OGM000008: DatastoreManager class [mongodb:] cannot be found in classpath try with: [MAP, INFINISPAN, EHCACHE, MONGODB, NEO4J_EMBEDDED]&quot;}}
+	at org.jboss.as.controller.client.helpers.standalone.impl.ServerDeploymentPlanResultFuture.getActionResult(ServerDeploymentPlanResultFuture.java:134)
+	at org.jboss.as.controller.client.helpers.standalone.impl.ServerDeploymentPlanResultFuture.getResultFromNode(ServerDeploymentPlanResultFuture.java:123)
+	at org.jboss.as.controller.client.helpers.standalone.impl.ServerDeploymentPlanResultFuture.get(ServerDeploymentPlanResultFuture.java:85)
+	at org.jboss.as.controller.client.helpers.standalone.impl.ServerDeploymentPlanResultFuture.get(ServerDeploymentPlanResultFuture.java:42)
+	at org.jboss.as.controller.client.helpers.standalone.ServerDeploymentHelper.deploy(ServerDeploymentHelper.java:50)
+	at org.jboss.as.arquillian.container.ArchiveDeployer.deployInternal(ArchiveDeployer.java:77)
+	... 96 more
+</error>
+    <system-out>15:14:54,978 INFO  [org.jboss.modules] (main) JBoss Modules version 1.2.0.Final-redhat-1
+15:14:55,164 INFO  [org.jboss.msc] (main) JBoss MSC version 1.0.4.GA-redhat-1
+15:14:55,250 INFO  [org.jboss.as] (MSC service thread 1-8) JBAS015899: JBoss EAP 6.1.0.GA (AS 7.2.0.Final-redhat-8) starting
+15:14:56,163 INFO  [org.xnio] (MSC service thread 1-5) XNIO Version 3.0.7.GA-redhat-1
+15:14:56,166 INFO  [org.jboss.as.server] (Controller Boot Thread) JBAS015888: Creating http management service using socket-binding (management-http)
+15:14:56,170 INFO  [org.xnio.nio] (MSC service thread 1-5) XNIO NIO Implementation Version 3.0.7.GA-redhat-1
+15:14:56,180 INFO  [org.jboss.remoting] (MSC service thread 1-5) JBoss Remoting version 3.2.16.GA-redhat-1
+15:14:56,221 INFO  [org.jboss.as.clustering.infinispan] (ServerService Thread Pool -- 29) JBAS010280: Activating Infinispan subsystem.
+15:14:56,240 INFO  [org.jboss.as.connector.logging] (MSC service thread 1-4) JBAS010408: Starting JCA Subsystem (IronJacamar 1.0.17.Final-redhat-1)
+15:14:56,252 INFO  [org.jboss.as.jsf] (ServerService Thread Pool -- 35) JBAS012605: Activated the following JSF Implementations: [main, 1.2]
+15:14:56,258 INFO  [org.jboss.as.naming] (ServerService Thread Pool -- 37) JBAS011800: Activating Naming Subsystem
+15:14:56,289 INFO  [org.jboss.as.webservices] (ServerService Thread Pool -- 46) JBAS015537: Activating WebServices Extension
+15:14:56,334 INFO  [org.jboss.as.security] (ServerService Thread Pool -- 42) JBAS013171: Activating Security Subsystem
+15:14:56,349 INFO  [org.jboss.as.security] (MSC service thread 1-5) JBAS013170: Current PicketBox version=4.0.17.Final-redhat-1
+15:14:56,375 INFO  [org.jboss.as.naming] (MSC service thread 1-2) JBAS011802: Starting Naming Service
+15:14:56,472 INFO  [org.jboss.as.mail.extension] (MSC service thread 1-8) JBAS015400: Bound mail session [java:jboss/mail/Default]
+15:14:56,577 INFO  [org.jboss.as.connector.subsystems.datasources] (ServerService Thread Pool -- 25) JBAS010403: Deploying JDBC-compliant driver class org.h2.Driver (version 1.3)
+15:14:56,698 INFO  [org.jboss.ws.common.management] (MSC service thread 1-1) JBWS022052: Starting JBoss Web Services - Stack CXF Server 4.1.3.Final-redhat-3
+15:14:56,853 INFO  [org.jboss.as.server.deployment.scanner] (MSC service thread 1-8) JBAS015012: Started FileSystemDeploymentService for directory D:\_Prog\jBoss\servers\jboss-eap-6.1\standalone\deployments
+15:14:56,930 INFO  [org.jboss.as.remoting] (MSC service thread 1-1) JBAS017100: Listening on 127.0.0.1:9999
+15:14:56,931 INFO  [org.jboss.as.remoting] (MSC service thread 1-6) JBAS017100: Listening on 127.0.0.1:4447
+15:14:56,941 ERROR [org.jboss.msc.service.fail] (MSC service thread 1-8) MSC000001: Failed to start service jboss.serverManagement.controller.management.http: org.jboss.msc.service.StartException in service jboss.serverManagement.controller.management.http: Address already in use: bind /127.0.0.1:9990
+	at org.jboss.as.server.mgmt.HttpManagementService.start(HttpManagementService.java:224) [jboss-as-server-7.2.0.Final-redhat-8.jar:7.2.0.Final-redhat-8]
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.startService(ServiceControllerImpl.java:1811) [jboss-msc-1.0.4.GA-redhat-1.jar:1.0.4.GA-redhat-1]
+	at org.jboss.msc.service.ServiceControllerImpl$StartTask.run(ServiceControllerImpl.java:1746) [jboss-msc-1.0.4.GA-redhat-1.jar:1.0.4.GA-redhat-1]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110) [rt.jar:1.7.0_11]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603) [rt.jar:1.7.0_11]
+	at java.lang.Thread.run(Thread.java:722) [rt.jar:1.7.0_11]
+Caused by: java.net.BindException: Address already in use: bind
+	at sun.nio.ch.Net.bind0(Native Method) [rt.jar:1.7.0_11]
+	at sun.nio.ch.Net.bind(Net.java:344) [rt.jar:1.7.0_11]
+	at sun.nio.ch.Net.bind(Net.java:336) [rt.jar:1.7.0_11]
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:199) [rt.jar:1.7.0_11]
+	at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) [rt.jar:1.7.0_11]
+	at org.jboss.sun.net.httpserver.ServerImpl.&lt;init&gt;(ServerImpl.java:144)
+	at org.jboss.sun.net.httpserver.HttpServerImpl.&lt;init&gt;(HttpServerImpl.java:54)
+	at org.jboss.sun.net.httpserver.DefaultHttpServerProvider.createHttpServer(DefaultHttpServerProvider.java:38)
+	at org.jboss.com.sun.net.httpserver.HttpServer.create(HttpServer.java:147)
+	at org.jboss.as.domain.http.server.ManagementHttpServer.create(ManagementHttpServer.java:162)
+	at org.jboss.as.server.mgmt.HttpManagementService.start(HttpManagementService.java:190) [jboss-as-server-7.2.0.Final-redhat-8.jar:7.2.0.Final-redhat-8]
+	... 5 more
+
+15:14:56,948 INFO  [org.apache.coyote.http11] (MSC service thread 1-2) JBWEB003001: Coyote HTTP/1.1 initializing on : http-/127.0.0.1:8080
+15:14:56,959 INFO  [org.apache.coyote.http11] (MSC service thread 1-2) JBWEB003000: Coyote HTTP/1.1 starting on: http-/127.0.0.1:8080
+15:14:57,059 INFO  [org.jboss.as.connector.subsystems.datasources] (MSC service thread 1-7) JBAS010400: Bound data source [java:jboss/datasources/ExampleDS]
+15:14:57,304 INFO  [org.jboss.as.controller] (Controller Boot Thread) JBAS014774: Service status report
+JBAS014777:   Services which failed to start:      service jboss.serverManagement.controller.management.http: org.jboss.msc.service.StartException in service jboss.serverManagement.controller.management.http: Address already in use: bind /127.0.0.1:9990
+
+15:14:57,322 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015964: Http management interface is not enabled
+15:14:57,322 INFO  [org.jboss.as] (Controller Boot Thread) JBAS015954: Admin console is not enabled
+15:14:57,323 ERROR [org.jboss.as] (Controller Boot Thread) JBAS015875: JBoss EAP 6.1.0.GA (AS 7.2.0.Final-redhat-8) started (with errors) in 2780ms - Started 121 of 177 services (2 services failed or missing dependencies, 53 services are passive or on-demand)
+15:15:02,139 INFO  [org.jboss.as.repository] (management-handler-thread - 2) JBAS014900: Content added at location D:\_Prog\jBoss\servers\jboss-eap-6.1\standalone\data\content\72\66638b40bdf4aa0317ad8c462705625f965bc7\content
+15:15:02,151 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-3) JBAS015876: Starting deployment of &quot;arquillian-service&quot; (runtime-name: &quot;arquillian-service&quot;)
+15:15:02,409 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-1) JBAS018567: Deployment &quot;deployment.arquillian-service&quot; is using a private module (&quot;org.jboss.as.jmx:main&quot;) which may be changed or removed in future versions without notice.
+15:15:02,409 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-1) JBAS018567: Deployment &quot;deployment.arquillian-service&quot; is using a private module (&quot;org.jboss.as.server:main&quot;) which may be changed or removed in future versions without notice.
+15:15:02,418 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-1) JBAS018567: Deployment &quot;deployment.arquillian-service&quot; is using a private module (&quot;org.jboss.as.osgi:main&quot;) which may be changed or removed in future versions without notice.
+15:15:02,419 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-1) JBAS018567: Deployment &quot;deployment.arquillian-service&quot; is using a private module (&quot;org.jboss.jandex:main&quot;) which may be changed or removed in future versions without notice.
+15:15:02,419 WARN  [org.jboss.as.dependency.private] (MSC service thread 1-1) JBAS018567: Deployment &quot;deployment.arquillian-service&quot; is using a private module (&quot;org.jboss.osgi.framework:main&quot;) which may be changed or removed in future versions without notice.
+15:15:02,445 WARN  [org.jboss.weld.deployer] (MSC service thread 1-7) JBAS016012: Deployment deployment &quot;arquillian-service&quot; contains CDI annotations but beans.xml was not found.
+15:15:02,609 INFO  [org.jboss.as.server] (management-handler-thread - 2) JBAS018559: Deployed &quot;arquillian-service&quot; (runtime-name : &quot;arquillian-service&quot;)
+15:15:03,025 INFO  [org.jboss.as.repository] (management-handler-thread - 3) JBAS014900: Content added at location D:\_Prog\jBoss\servers\jboss-eap-6.1\standalone\data\content\4c\f5cc5166d023275cbbf1c6f241435d617c8651\content
+15:15:03,028 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) JBAS015876: Starting deployment of &quot;fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar&quot; (runtime-name: &quot;fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar&quot;)
+15:15:03,062 INFO  [org.jboss.as.jpa] (MSC service thread 1-8) JBAS011401: Read persistence.xml for mongodbTest
+15:15:03,087 INFO  [org.jboss.as.jpa] (ServerService Thread Pool -- 10) JBAS011402: Starting Persistence Unit Service &apos;fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar#mongodbTest&apos;
+15:15:03,198 INFO  [org.hibernate.annotations.common.Version] (ServerService Thread Pool -- 10) HCANN000001: Hibernate Commons Annotations {4.0.2.Final}
+15:15:03,203 INFO  [org.hibernate.Version] (ServerService Thread Pool -- 10) HHH000412: Hibernate Core {4.2.0.CR1}
+15:15:03,209 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 10) HHH000206: hibernate.properties not found
+15:15:03,212 INFO  [org.hibernate.cfg.Environment] (ServerService Thread Pool -- 10) HHH000021: Bytecode provider name : javassist
+15:15:03,237 INFO  [org.hibernate.ejb.Ejb3Configuration] (ServerService Thread Pool -- 10) HHH000204: Processing PersistenceUnitInfo [
+	name: mongodbTest
+	...]
+15:15:03,545 INFO  [org.hibernate.dialect.Dialect] (ServerService Thread Pool -- 10) HHH000400: Using dialect: org.hibernate.ogm.dialect.NoopDialect
+15:15:03,551 INFO  [org.hibernate.engine.jdbc.internal.LobCreatorBuilder] (ServerService Thread Pool -- 10) HHH000422: Disabling contextual LOB creation as connection was null
+15:15:03,561 INFO  [org.hibernate.engine.transaction.internal.TransactionFactoryInitiator] (ServerService Thread Pool -- 10) HHH000268: Transaction strategy: org.hibernate.engine.transaction.internal.jta.CMTTransactionFactory
+15:15:03,568 INFO  [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory] (ServerService Thread Pool -- 10) HHH000397: Using ASTQueryTranslatorFactory
+15:15:03,647 INFO  [org.hibernate.validator.internal.util.Version] (ServerService Thread Pool -- 10) HV000001: Hibernate Validator 4.3.1.Final-redhat-1
+15:15:03,917 INFO  [org.hibernate.ogm.cfg.impl.Version] (ServerService Thread Pool -- 10) OGM000001: Hibernate OGM 4.0.0.Beta4
+15:15:03,995 ERROR [org.jboss.msc.service.fail] (ServerService Thread Pool -- 10) MSC000001: Failed to start service jboss.persistenceunit.&quot;fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar#mongodbTest&quot;: org.jboss.msc.service.StartException in service jboss.persistenceunit.&quot;fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar#mongodbTest&quot;: javax.persistence.PersistenceException: [PersistenceUnit: mongodbTest] Unable to build EntityManagerFactory
+	at org.jboss.as.jpa.service.PersistenceUnitServiceImpl$1.run(PersistenceUnitServiceImpl.java:103)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1110) [rt.jar:1.7.0_11]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:603) [rt.jar:1.7.0_11]
+	at java.lang.Thread.run(Thread.java:722) [rt.jar:1.7.0_11]
+	at org.jboss.threads.JBossThread.run(JBossThread.java:122) [jboss-threads-2.1.0.Final-redhat-1.jar:2.1.0.Final-redhat-1]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: mongodbTest] Unable to build EntityManagerFactory
+	at org.hibernate.ejb.Ejb3Configuration.buildEntityManagerFactory(Ejb3Configuration.java:915)
+	at org.hibernate.ejb.Ejb3Configuration.buildEntityManagerFactory(Ejb3Configuration.java:890)
+	at org.hibernate.ejb.HibernatePersistence.createContainerEntityManagerFactory(HibernatePersistence.java:74)
+	at org.hibernate.ogm.jpa.HibernateOgmPersistence.createContainerEntityManagerFactory(HibernateOgmPersistence.java:133)
+	at org.jboss.as.jpa.service.PersistenceUnitServiceImpl.createContainerEntityManagerFactory(PersistenceUnitServiceImpl.java:200)
+	at org.jboss.as.jpa.service.PersistenceUnitServiceImpl.access$600(PersistenceUnitServiceImpl.java:57)
+	at org.jboss.as.jpa.service.PersistenceUnitServiceImpl$1.run(PersistenceUnitServiceImpl.java:99)
+	... 4 more
+Caused by: org.hibernate.MappingException: Could not get constructor for org.hibernate.ogm.persister.SingleTableOgmEntityPersister
+	at org.hibernate.persister.internal.PersisterFactoryImpl.create(PersisterFactoryImpl.java:185)
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:135)
+	at org.hibernate.internal.SessionFactoryImpl.&lt;init&gt;(SessionFactoryImpl.java:385)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:1742)
+	at org.hibernate.ejb.EntityManagerFactoryImpl.&lt;init&gt;(EntityManagerFactoryImpl.java:94)
+	at org.hibernate.ejb.Ejb3Configuration.buildEntityManagerFactory(Ejb3Configuration.java:905)
+	... 10 more
+Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.ogm.datastore.spi.DatastoreProvider]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:186)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:150)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:131)
+	at org.hibernate.ogm.dialect.impl.GridDialectFactoryInitiator.createDialect(GridDialectFactoryInitiator.java:58)
+	at org.hibernate.ogm.dialect.impl.GridDialectFactoryInitiator.initiateService(GridDialectFactoryInitiator.java:49)
+	at org.hibernate.ogm.dialect.impl.GridDialectFactoryInitiator.initiateService(GridDialectFactoryInitiator.java:38)
+	at org.hibernate.service.internal.SessionFactoryServiceRegistryImpl.initiateService(SessionFactoryServiceRegistryImpl.java:91)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:176)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:150)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:131)
+	at org.hibernate.ogm.datastore.impl.DatastoreServicesInitiator.initiateService(DatastoreServicesInitiator.java:50)
+	at org.hibernate.ogm.datastore.impl.DatastoreServicesInitiator.initiateService(DatastoreServicesInitiator.java:39)
+	at org.hibernate.service.internal.SessionFactoryServiceRegistryImpl.initiateService(SessionFactoryServiceRegistryImpl.java:91)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:176)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:150)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:131)
+	at org.hibernate.ogm.persister.OgmEntityPersister.&lt;init&gt;(OgmEntityPersister.java:129)
+	at org.hibernate.ogm.persister.SingleTableOgmEntityPersister.&lt;init&gt;(SingleTableOgmEntityPersister.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) [rt.jar:1.7.0_11]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57) [rt.jar:1.7.0_11]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) [rt.jar:1.7.0_11]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:525) [rt.jar:1.7.0_11]
+	at org.hibernate.persister.internal.PersisterFactoryImpl.create(PersisterFactoryImpl.java:163)
+	... 15 more
+Caused by: org.hibernate.HibernateException: OGM000008: DatastoreManager class [mongodb:] cannot be found in classpath try with: [MAP, INFINISPAN, EHCACHE, MONGODB, NEO4J_EMBEDDED]
+	at org.hibernate.ogm.datastore.impl.DatastoreProviderInitiator.findDataStoreProviderClass(DatastoreProviderInitiator.java:145)
+	at org.hibernate.ogm.datastore.impl.DatastoreProviderInitiator.createDatastore(DatastoreProviderInitiator.java:99)
+	at org.hibernate.ogm.datastore.impl.DatastoreProviderInitiator.createDatastoreProvider(DatastoreProviderInitiator.java:90)
+	at org.hibernate.ogm.datastore.impl.DatastoreProviderInitiator.initiateService(DatastoreProviderInitiator.java:71)
+	at org.hibernate.ogm.datastore.impl.DatastoreProviderInitiator.initiateService(DatastoreProviderInitiator.java:56)
+	at org.hibernate.service.internal.SessionFactoryServiceRegistryImpl.initiateService(SessionFactoryServiceRegistryImpl.java:91)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:176)
+	... 37 more
+
+15:15:04,207 ERROR [org.jboss.as.server] (management-handler-thread - 3) JBAS015870: Deploy of deployment &quot;fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar&quot; was rolled back with the following failure message: 
+{&quot;JBAS014671: Failed services&quot; =&gt; {&quot;jboss.persistenceunit.\&quot;fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar#mongodbTest\&quot;&quot; =&gt; &quot;org.jboss.msc.service.StartException in service jboss.persistenceunit.\&quot;fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar#mongodbTest\&quot;: javax.persistence.PersistenceException: [PersistenceUnit: mongodbTest] Unable to build EntityManagerFactory
+    Caused by: javax.persistence.PersistenceException: [PersistenceUnit: mongodbTest] Unable to build EntityManagerFactory
+    Caused by: org.hibernate.MappingException: Could not get constructor for org.hibernate.ogm.persister.SingleTableOgmEntityPersister
+    Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.ogm.datastore.spi.DatastoreProvider]
+    Caused by: org.hibernate.HibernateException: OGM000008: DatastoreManager class [mongodb:] cannot be found in classpath try with: [MAP, INFINISPAN, EHCACHE, MONGODB, NEO4J_EMBEDDED]&quot;}}
+15:15:04,215 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) JBAS015877: Stopped deployment fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar (runtime-name: fd9ff959-cc7f-4c24-96e0-66284aff5aa9.jar) in 8ms
+</system-out>
+    <system-err>II 16, 2014 3:14:54 ODP. org.jboss.as.arquillian.container.managed.ManagedDeployableContainer startInternal
+INFO: Starting container with: [&quot;C:\Program Files\Java\jdk1.7.0_11\\bin\java&quot;, -Xmx512m, -XX:MaxPermSize=128m, -ea, -Djboss.home.dir=D:\_Prog\jBoss\servers\jboss-eap-6.1, -Dorg.jboss.boot.log.file=D:\_Prog\jBoss\servers\jboss-eap-6.1\standalone\log\boot.log, -Dlogging.configuration=file:/D:/_Prog/jBoss/servers/jboss-eap-6.1/standalone/configuration/logging.properties, -Djboss.bundles.dir=D:\_Prog\jBoss\servers\jboss-eap-6.1\bundles, -jar, D:\_Prog\jBoss\servers\jboss-eap-6.1\jboss-modules.jar, -mp, D:\_Prog\jBoss\servers\jboss-eap-6.1\modules, -jaxpmodule, javax.xml.jaxp-provider, org.jboss.as.standalone, -server-config, standalone.xml]
+</system-err>
+  </testcase>
+</testsuite>
