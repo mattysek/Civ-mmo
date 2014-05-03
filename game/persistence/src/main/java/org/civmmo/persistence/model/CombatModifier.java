@@ -3,13 +3,14 @@ package org.civmmo.persistence.model;
 import java.io.Serializable;
 
 import javax.persistence.*;
+import org.hibernate.search.annotations.Indexed;
 
 /**
  * Entity implementation class for Entity: CombatModifier
  *
  */
 @Entity
-
+@Indexed
 public class CombatModifier implements Serializable {
 
 	   

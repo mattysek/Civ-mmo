@@ -4,13 +4,14 @@ import java.io.Serializable;
 import java.lang.String;
 
 import javax.persistence.*;
+import org.hibernate.search.annotations.Indexed;
 
 /**
  * Entity implementation class for Entity: Policy
  *
  */
 @Entity
-
+@Indexed
 public class Policy implements Serializable {
 
 	@Id

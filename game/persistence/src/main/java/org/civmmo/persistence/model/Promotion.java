@@ -5,13 +5,14 @@ import java.lang.String;
 import java.util.List;
 
 import javax.persistence.*;
+import org.hibernate.search.annotations.Indexed;
 
 /**
  * Entity implementation class for Entity: Promotion
  *
  */
 @Entity
-
+@Indexed
 public class Promotion implements Serializable {
 
 	   

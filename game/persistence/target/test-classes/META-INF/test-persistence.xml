@@ -27,6 +27,7 @@
         <!-- The datasource is deployed as WEB-INF/test-ds.xml, 
         you can find it in the source at src/test/resources/test-ds.xml -->
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+        <class>org.civmmo.persistence.model.Region</class>
         <class>org.civmmo.persistence.model.Civilization</class>
         <class>org.civmmo.persistence.model.SocialPolicy</class>
         <class>org.civmmo.persistence.model.Policy</class>

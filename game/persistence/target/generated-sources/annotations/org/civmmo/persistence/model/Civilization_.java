@@ -15,7 +15,7 @@ public abstract class Civilization_ {
 	public static volatile ListAttribute<Civilization, SocialPolicy> availableSocialPolicies;
 	public static volatile ListAttribute<Civilization, Unit> units;
 	public static volatile SingularAttribute<Civilization, Long> gold;
-	public static volatile SingularAttribute<Civilization, Float> happiness;
+	public static volatile SingularAttribute<Civilization, Double> happiness;
 	public static volatile SingularAttribute<Civilization, Long> culture;
 	public static volatile ListAttribute<Civilization, Technology> knownTechnologies;
 	public static volatile SingularAttribute<Civilization, Long> science;

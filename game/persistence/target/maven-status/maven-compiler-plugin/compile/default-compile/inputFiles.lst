@@ -22,6 +22,7 @@ D:\_Prog\jBoss\_workspace\game\persistence\src\main\java\org\civmmo\persistence\
 D:\_Prog\jBoss\_workspace\game\persistence\src\main\java\org\civmmo\persistence\model\River.java
 D:\_Prog\jBoss\_workspace\game\persistence\src\main\java\org\civmmo\persistence\repository\RiverRepository.java
 D:\_Prog\jBoss\_workspace\game\persistence\src\main\java\org\civmmo\persistence\repository\impl\PromotionRepositoryImpl.java
+D:\_Prog\jBoss\_workspace\game\persistence\src\main\java\org\civmmo\persistence\model\Region.java
 D:\_Prog\jBoss\_workspace\game\persistence\src\main\java\org\civmmo\persistence\model\TerrainType.java
 D:\_Prog\jBoss\_workspace\game\persistence\src\main\java\org\civmmo\persistence\repository\impl\TerrainTypeRepositoryImpl.java
 D:\_Prog\jBoss\_workspace\game\persistence\src\main\java\org\civmmo\persistence\repository\TechnologyRepository.java

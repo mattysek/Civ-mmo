@@ -5,12 +5,14 @@ import java.lang.String;
 import java.util.List;
 
 import javax.persistence.*;
+import org.hibernate.search.annotations.Indexed;
 
 /**
  * Entity implementation class for Entity: Action
  *
  */
 @Entity
+@Indexed
 public class Action implements Serializable {
 	
 	@Id

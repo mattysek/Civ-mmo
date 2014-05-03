@@ -6,13 +6,14 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.*;
+import org.hibernate.search.annotations.Indexed;
 
 /**
  * Entity implementation class for Entity: Civilization
  *
  */
 @Entity
-
+@Indexed
 public class Civilization implements Serializable {
 
 	@Id

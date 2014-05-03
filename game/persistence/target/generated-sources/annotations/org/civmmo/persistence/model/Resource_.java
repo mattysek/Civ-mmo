@@ -12,7 +12,7 @@ public abstract class Resource_ {
 	public static volatile SingularAttribute<Resource, Integer> gold;
 	public static volatile ListAttribute<Resource, Unit> requiredByUnits;
 	public static volatile SingularAttribute<Resource, Integer> production;
-	public static volatile SingularAttribute<Resource, Float> happiness;
+	public static volatile SingularAttribute<Resource, Double> happiness;
 	public static volatile SingularAttribute<Resource, String> name;
 	public static volatile SingularAttribute<Resource, Resource> revealedBy;
 	public static volatile SingularAttribute<Resource, Long> id;

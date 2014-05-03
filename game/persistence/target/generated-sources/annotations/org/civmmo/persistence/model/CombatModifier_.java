@@ -9,7 +9,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class CombatModifier_ {
 
 	public static volatile SingularAttribute<CombatModifier, Long> id;
-	public static volatile SingularAttribute<CombatModifier, Float> value;
+	public static volatile SingularAttribute<CombatModifier, Double> value;
 	public static volatile SingularAttribute<CombatModifier, Action> afectedAction;
 
 }

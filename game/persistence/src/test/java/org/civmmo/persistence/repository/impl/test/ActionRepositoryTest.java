@@ -32,7 +32,7 @@ public class ActionRepositoryTest {
                 .addPackage(Action.class.getPackage())
                 .addPackage(ActionRepository.class.getPackage())
                 .addPackage(ActionRepositoryImpl.class.getPackage())
-                .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
+                .addAsResource("META-INF/test-persistence-ogm.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource("META-INF/jboss-deployment-structure.xml", "jboss-deployment-structure.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }
@@ -122,12 +122,12 @@ public class ActionRepositoryTest {
     public void testGetAll() {
         action = this.getAction();
         repository.create(action);
-        System.out.println(action.getName() + " " + action.getId());
         Action another = this.getAction();
         repository.create(another);
-        System.out.println(another.getName() + " " + another.getId());
-        System.out.println("------------------------------------------------------");
-        repository.getAll().stream().forEach((e) -> System.out.println(e.getName() + " " + e.getId()));
+        System.out.println(repository.getById(another.getId()).getName());
+        //ogm needs to commit before query for all
+        commitTransaction();
+        startTransaction();
         assertTrue(repository.getAll().contains(action) && repository.getAll().contains(another));
     }
 

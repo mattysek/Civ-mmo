@@ -154,6 +154,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Hibernate search -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-search</artifactId>
+            <scope>provided</scope>
+         </dependency>
+
         <!-- Needed for running tests (you may also use TestNG) -->
         <dependency>
             <groupId>junit</groupId>

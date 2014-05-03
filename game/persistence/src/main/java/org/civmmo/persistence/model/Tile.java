@@ -4,13 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
+import org.hibernate.search.annotations.Indexed;
 
 /**
  * Entity implementation class for Entity: Tile
  *
  */
 @Entity
-
+@Indexed
 public class Tile implements Serializable {
 
 	   
@@ -20,13 +21,15 @@ public class Tile implements Serializable {
 	private long x;
 	private long y;
 	
-        @OneToOne
+        @OneToOne(mappedBy="center")
 	private City city;
-        @OneToOne
+        @OneToOne(mappedBy="position")
 	private Unit militaryUnit;
-        @OneToOne
+        @OneToOne(mappedBy="position")
 	private Unit civilUnit;
 	
+        @ManyToOne
+	private Region region;
 	@ManyToOne
 	private TerrainFeature terrainFeature;
 	@ManyToOne
@@ -76,6 +79,13 @@ public class Tile implements Serializable {
 	public void setY(long y) {
 		this.y = y;
 	}
+        public Region getRegion() {
+            return region;
+        }
+
+        public void setRegion(Region region) {
+            this.region = region;
+        }
 	public City getCity() {
 		return city;
 	}

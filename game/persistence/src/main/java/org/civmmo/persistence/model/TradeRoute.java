@@ -4,13 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
+import org.hibernate.search.annotations.Indexed;
 
 /**
  * Entity implementation class for Entity: TradeRoute
  *
  */
 @Entity
-
+@Indexed
 public class TradeRoute implements Serializable {
 
 	   

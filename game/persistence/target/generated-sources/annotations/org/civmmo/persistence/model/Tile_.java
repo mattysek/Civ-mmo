@@ -25,6 +25,7 @@ public abstract class Tile_ {
 	public static volatile SingularAttribute<Tile, Long> x;
 	public static volatile SingularAttribute<Tile, Long> y;
 	public static volatile SingularAttribute<Tile, Long> id;
+	public static volatile SingularAttribute<Tile, Region> region;
 	public static volatile ListAttribute<Tile, City> workedBy;
 
 }

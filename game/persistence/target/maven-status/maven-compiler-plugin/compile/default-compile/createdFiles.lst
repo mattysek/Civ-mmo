@@ -1,4 +1,5 @@
 org\civmmo\persistence\repository\impl\ActionRepositoryImpl.class
+org\civmmo\persistence\model\Region.class
 org\civmmo\persistence\repository\CivilizationRepository.class
 org\civmmo\persistence\repository\impl\CityRepositoryImpl.class
 org\civmmo\persistence\repository\impl\ImprovementRepositoryImpl.class
@@ -37,6 +38,7 @@ org\civmmo\persistence\model\Action_.class
 org\civmmo\persistence\model\TerrainFeature_.class
 org\civmmo\persistence\repository\SocialPolicyRepository.class
 org\civmmo\persistence\model\River_.class
+org\civmmo\persistence\model\Region_.class
 org\civmmo\persistence\repository\impl\ResourceRepositoryImpl.class
 org\civmmo\persistence\model\CombatModifier.class
 org\civmmo\persistence\model\TradeRoute_.class
