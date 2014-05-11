@@ -7,12 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import org.hibernate.search.annotations.Indexed;
 
 /**
  *
  * @author Mattysek
  */
 @Entity
+@Indexed
 public class Region implements Serializable {
     
     @Id

@@ -11,7 +11,7 @@ import org.civmmo.persistence.repository.BaseRepository;
 
 public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
 {   
-	@PersistenceContext
+    @PersistenceContext
     private EntityManager em;
 
     public EntityManager getEntityManager() {
@@ -45,10 +45,6 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
     {
         em.merge(object);
     }
-    private boolean containsObject(T object)
-    {
-    	return em.contains(object);
-    }
     
     protected void persist(T object)
     {
@@ -64,10 +60,6 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
     {
         mergeObject(object);
     }
-    protected boolean contains(T object)
-    {
-    	return containsObject(object);
-    }
         
     public void create(T object) 
     {
@@ -76,22 +68,12 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
 
     public void update(T object) 
     {
-        if(contains(object)) {
-            merge(object);
-        }
-        else {
-            throw new IllegalArgumentException();
-        }
+        merge(object);
     }
 
     public void delete(T object) 
     {
-        if(contains(object)) {
-            remove(object);
-        }
-        else {
-            throw new IllegalArgumentException();
-        }
+        remove(object);
     }
 
     public T getById(Long id) 
