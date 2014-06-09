@@ -1,4 +1,4 @@
-package org.civmmo.persistence.service;
+package org.civmmo.persistence.service.impl;
 
 import java.util.List;
 import java.util.stream.Collectors;

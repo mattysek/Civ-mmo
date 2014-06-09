@@ -1,4 +1,4 @@
-package org.civmmo.persistence.service.test;
+package org.civmmo.persistence.service.impl.test;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,7 +8,7 @@ import org.civmmo.contracts.services.persistence.ActionService;
 import org.civmmo.persistence.model.Action;
 import org.civmmo.persistence.repository.ActionRepository;
 import org.civmmo.persistence.repository.impl.ActionRepositoryImpl;
-import org.civmmo.persistence.service.ActionServiceImpl;
+import org.civmmo.persistence.service.impl.ActionServiceImpl;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;

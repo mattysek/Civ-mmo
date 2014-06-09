@@ -1,4 +1,4 @@
-package org.civmmo.persistence.service.test;
+package org.civmmo.persistence.service.impl.test;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,7 +8,7 @@ import org.civmmo.contracts.services.persistence.ActionService;
 import org.civmmo.persistence.model.Action;
 import org.civmmo.persistence.repository.ActionRepository;
 import org.civmmo.persistence.repository.impl.ActionRepositoryImpl;
-import org.civmmo.persistence.service.ActionServiceImpl;
+import org.civmmo.persistence.service.impl.ActionServiceImpl;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
@@ -23,7 +23,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
-public class ActionServiceOgmMongoTest {
+public class ActionServiceOgmInfinispanTest {
 
     @Deployment
     public static Archive<?> createTestArchive() {
@@ -34,7 +34,7 @@ public class ActionServiceOgmMongoTest {
                 .addPackage(ActionServiceImpl.class.getPackage())
                 .addPackage(ActionService.class.getPackage())
                 .addPackage(ActionDto.class.getPackage())
-                .addAsResource("META-INF/test-persistence-ogm-mongo.xml", "META-INF/persistence.xml")
+                .addAsResource("META-INF/test-persistence-ogm-infinispan.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource("META-INF/jboss-deployment-structure.xml", "jboss-deployment-structure.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }

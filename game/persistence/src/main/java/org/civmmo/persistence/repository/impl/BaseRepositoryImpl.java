@@ -1,18 +1,22 @@
 package org.civmmo.persistence.repository.impl;
 
-import java.util.List;
 import java.lang.reflect.ParameterizedType;
-
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import org.civmmo.persistence.repository.BaseRepository;
+import org.jboss.logging.Logger;
+import org.jboss.logging.Logger.Level;
 
 public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
 {   
     @PersistenceContext
     private EntityManager em;
+    
+    private final static Logger LOGGER = Logger.getLogger("ogm-repository-logger"); 
 
     public EntityManager getEntityManager() {
         return em;
@@ -63,22 +67,37 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
         
     public void create(T object) 
     {
+        Instant start = Instant.now();
     	persist(object);
+        Instant end = Instant.now();
+        LOGGER.debug("create: " + Duration.between(start, end));
     }
 
     public void update(T object) 
     {
+        Instant start = Instant.now();
         merge(object);
+        Instant end = Instant.now();
+        LOGGER.debug("update: " + Duration.between(start, end));
     }
 
     public void delete(T object) 
     {
+        Instant start = Instant.now();
         remove(object);
+        Instant end = Instant.now();
+        LOGGER.debug("delete: " + Duration.between(start, end));
     }
 
     public T getById(Long id) 
     {
-        return em.find(persistentClass, id);
+        Instant start = Instant.now();
+        em.find(persistentClass, id);
+        Instant end = Instant.now();
+        LOGGER.debug("get by id: " + Duration.between(start, end));
+        
+        T result = em.find(persistentClass, id);
+        return result;
     }
 
     @SuppressWarnings("unchecked")
