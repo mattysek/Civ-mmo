@@ -3,9 +3,17 @@ package org.civmmo.persistence.service.impl;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.stream.Collectors;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
+import javax.transaction.UserTransaction;
 import org.civmmo.contracts.model.ActionDto;
 import org.civmmo.contracts.services.persistence.ActionService;
 import org.civmmo.persistence.model.Action;
@@ -15,11 +23,12 @@ import org.jboss.logging.Logger;
 @Stateless
 public class ActionServiceImpl extends BaseService implements ActionService {
     
+    
+    
     @Inject
     private ActionRepository repository;
     
     public void create(ActionDto dto) {
-        
         Action action = translate(dto);
         repository.create(action);
         dto.setId(action.getId());

@@ -50,6 +50,11 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
         em.merge(object);
     }
     
+    private void log(String operation, String object, Instant start, Instant end)
+    {
+        LOGGER.debug(operation + " " + object + ": " + Duration.between(start, end));
+    }
+    
     protected void persist(T object)
     {
         persistObject(object);
@@ -70,7 +75,7 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
         Instant start = Instant.now();
     	persist(object);
         Instant end = Instant.now();
-        LOGGER.debug("create: " + Duration.between(start, end));
+        log("create",object.getClass().getName(),start,end);
     }
 
     public void update(T object) 
@@ -78,7 +83,7 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
         Instant start = Instant.now();
         merge(object);
         Instant end = Instant.now();
-        LOGGER.debug("update: " + Duration.between(start, end));
+        log("update",object.getClass().getName(),start,end);
     }
 
     public void delete(T object) 
@@ -86,7 +91,7 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
         Instant start = Instant.now();
         remove(object);
         Instant end = Instant.now();
-        LOGGER.debug("delete: " + Duration.between(start, end));
+        log("delete",object.getClass().getName(),start,end);
     }
 
     public T getById(Long id) 
@@ -94,7 +99,7 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
         Instant start = Instant.now();
         em.find(persistentClass, id);
         Instant end = Instant.now();
-        LOGGER.debug("get by id: " + Duration.between(start, end));
+        log("delete",persistentClass.getName(),start,end);
         
         T result = em.find(persistentClass, id);
         return result;

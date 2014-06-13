@@ -23,7 +23,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(Arquillian.class)
-public class ActionServiceOgmInfinispanTest {
+public class ActionServiceOrmPostgreTest {
 
     @Deployment
     public static Archive<?> createTestArchive() {
@@ -34,13 +34,11 @@ public class ActionServiceOgmInfinispanTest {
                 .addPackage(ActionServiceImpl.class.getPackage())
                 .addPackage(ActionService.class.getPackage())
                 .addPackage(ActionDto.class.getPackage())
-                .addAsResource("META-INF/test-persistence-ogm-infinispan.xml", "META-INF/persistence.xml")
+                .addAsResource("META-INF/test-persistence-postgresql.xml", "META-INF/persistence.xml")
                 .addAsWebInfResource("META-INF/jboss-deployment-structure.xml", "jboss-deployment-structure.xml")
                 .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
-     
-    
     @Inject
     ActionService service;
 

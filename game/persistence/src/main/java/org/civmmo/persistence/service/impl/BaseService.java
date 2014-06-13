@@ -5,11 +5,15 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import javax.transaction.UserTransaction;
 import org.civmmo.contracts.model.*;
 import org.civmmo.persistence.model.*;
+import org.jboss.logging.Logger;
 
 public abstract class BaseService {
 
+    protected final static Logger LOGGER = Logger.getLogger("ogm-service-logger");
+        
     private <T, S> void set(Consumer<List<T>> consumer, Supplier<List<S>> supplier, Function<S, T> translator) {
         List<S> value = supplier.get();
         if (value != null) {
@@ -32,6 +36,10 @@ public abstract class BaseService {
         set(result::setCombatModifiers,
                 object::getCombatModifiers,
                 e -> translate(e));
+        
+        set(result::setAplicableTo,
+                object::getAplicableTo,
+                e -> translate(e));
 
         return result;
     }
@@ -48,6 +56,10 @@ public abstract class BaseService {
 
         set(result::setCombatModifiers,
                 object::getCombatModifiers,
+                e -> translate(e));
+        
+        set(result::setAplicableTo,
+                object::getAplicableTo,
                 e -> translate(e));
 
         return result;
