@@ -19,11 +19,11 @@ public class TradeRoute implements Serializable {
 	@GeneratedValue
 	private long id;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private City from;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private City to;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Tile> tiles;
 	
 	private static final long serialVersionUID = 1L;

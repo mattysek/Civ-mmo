@@ -39,4 +39,45 @@ public class PromotionServiceImpl extends BaseService implements PromotionServic
     public List<PromotionDto> getAll() {
         return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
     }
+    
+    @Override
+    public List<PromotionDto> getAllSQL() {
+        return repository.getAllUsingSQL().stream().map(e -> translate(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PromotionDto> getAllMongo() {
+        return repository.getAllUsingMongo().stream().map(e -> translate(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PromotionDto> getAllNeo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public PromotionDto getByIdSQL(long id) {
+        return translate(repository.getByIdUsingSQL(id));
+    }
+
+    @Override
+    public PromotionDto getByIdMongo(long id) {
+        return translate(repository.getByIdUsingMongo(id));
+    }
+
+    @Override
+    public PromotionDto getByIdNeo(long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<PromotionDto> testGetListNativeQuery(String query) {
+        return repository.getResultListOfNativeQuery(query)
+                         .stream().map(e -> translate(e)).collect(Collectors.toList());     
+    }
+
+    @Override
+    public PromotionDto testGetSingleNativeQuery(String query) {
+        return translate(repository.getSingleResultOfNativeQuery(query)); 
+    }
 }

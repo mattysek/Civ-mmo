@@ -27,15 +27,15 @@ public class Resource implements Serializable {
 	private int gold;
 	private double happiness;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Improvement improvement;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Resource revealedBy;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Building> requiredByBuildings;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Unit> requiredByUnits;
-	@OneToMany(mappedBy="resource")
+	@OneToMany(mappedBy="resource", cascade = CascadeType.ALL)
 	private List<Tile> canBeFoundOnTiles;
 	
 	private static final long serialVersionUID = 1L;

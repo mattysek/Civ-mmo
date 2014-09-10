@@ -21,36 +21,36 @@ public class Tile implements Serializable {
 	private long x;
 	private long y;
 	
-        @OneToOne(mappedBy="center")
+        @OneToOne(mappedBy="center", cascade = CascadeType.ALL)
 	private City city;
-        @OneToOne(mappedBy="position")
+        @OneToOne(mappedBy="position", cascade = CascadeType.ALL)
 	private Unit militaryUnit;
-        @OneToOne(mappedBy="position")
+        @OneToOne(mappedBy="position", cascade = CascadeType.ALL)
 	private Unit civilUnit;
 	
-        @ManyToOne
+        @ManyToOne(cascade = CascadeType.ALL)
 	private Region region;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private TerrainFeature terrainFeature;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private TerrainType terrainType;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Improvement improvement;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Resource resource;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<TradeRoute> tradeRoutes;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<River> rivers;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<City> visibleForCities;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Unit> visibleForUnits;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<City> controledByCity;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Unit> controledByUnit;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<City> workedBy;
 	
 	private static final long serialVersionUID = 1L;

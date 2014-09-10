@@ -39,5 +39,46 @@ public class RegionServiceImpl extends BaseService implements RegionService {
     public List<RegionDto> getAll() {
         return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
     }
+    
+    @Override
+    public List<RegionDto> getAllSQL() {
+        return repository.getAllUsingSQL().stream().map(e -> translate(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RegionDto> getAllMongo() {
+        return repository.getAllUsingMongo().stream().map(e -> translate(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<RegionDto> getAllNeo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public RegionDto getByIdSQL(long id) {
+        return translate(repository.getByIdUsingSQL(id));
+    }
+
+    @Override
+    public RegionDto getByIdMongo(long id) {
+        return translate(repository.getByIdUsingMongo(id));
+    }
+
+    @Override
+    public RegionDto getByIdNeo(long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<RegionDto> testGetListNativeQuery(String query) {
+        return repository.getResultListOfNativeQuery(query)
+                         .stream().map(e -> translate(e)).collect(Collectors.toList());     
+    }
+
+    @Override
+    public RegionDto testGetSingleNativeQuery(String query) {
+        return translate(repository.getSingleResultOfNativeQuery(query)); 
+    }
 
 }

@@ -22,15 +22,15 @@ public class Technology implements Serializable {
 	private String name;
 	private long cost;
 	
-	@OneToMany(mappedBy="revealedBy")
+	@OneToMany(mappedBy="revealedBy", cascade = CascadeType.ALL)
 	private List<Resource> revealsResources;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Building> revealsBuildings;
-	@ManyToMany
-	private List<Unit> revealsUnits;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<UnitType> revealsUnits;
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Technology> prerequisities;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Civilization> knownBy;
 	
 	private static final long serialVersionUID = 1L;
@@ -78,11 +78,11 @@ public class Technology implements Serializable {
 		this.revealsBuildings = revealsBuildings;
 	}
 
-	public List<Unit> getRevealsUnits() {
+	public List<UnitType> getRevealsUnits() {
 		return revealsUnits;
 	}
 
-	public void setRevealsUnits(List<Unit> revealsUnits) {
+	public void setRevealsUnits(List<UnitType> revealsUnits) {
 		this.revealsUnits = revealsUnits;
 	}
 

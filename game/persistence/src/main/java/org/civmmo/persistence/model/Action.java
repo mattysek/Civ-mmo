@@ -21,10 +21,10 @@ public class Action implements Serializable {
 	@Column(nullable=false)
 	private String name;
 	
-	@OneToMany(mappedBy="afectedAction")
+	@OneToMany(mappedBy="afectedAction", cascade = CascadeType.ALL)
 	private List<CombatModifier> combatModifiers;
-	@ManyToMany
-	private List<Unit> aplicableTo;
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<UnitType> aplicableTo;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -51,10 +51,10 @@ public class Action implements Serializable {
 	public void setCombatModifiers(List<CombatModifier> combatModifiers) {
 		this.combatModifiers = combatModifiers;
 	}
-	public List<Unit> getAplicableTo() {
+	public List<UnitType> getAplicableTo() {
 		return aplicableTo;
 	}
-	public void setAplicableTo(List<Unit> aplicableTo) {
+	public void setAplicableTo(List<UnitType> aplicableTo) {
 		this.aplicableTo = aplicableTo;
 	}
 	/* (non-Javadoc)

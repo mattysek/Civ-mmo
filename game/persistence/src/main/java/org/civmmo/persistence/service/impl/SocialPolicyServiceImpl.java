@@ -39,4 +39,45 @@ public class SocialPolicyServiceImpl extends BaseService implements SocialPolicy
     public List<SocialPolicyDto> getAll() {
         return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
     }
+    
+    @Override
+    public List<SocialPolicyDto> getAllSQL() {
+        return repository.getAllUsingSQL().stream().map(e -> translate(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<SocialPolicyDto> getAllMongo() {
+        return repository.getAllUsingMongo().stream().map(e -> translate(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<SocialPolicyDto> getAllNeo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public SocialPolicyDto getByIdSQL(long id) {
+        return translate(repository.getByIdUsingSQL(id));
+    }
+
+    @Override
+    public SocialPolicyDto getByIdMongo(long id) {
+        return translate(repository.getByIdUsingMongo(id));
+    }
+
+    @Override
+    public SocialPolicyDto getByIdNeo(long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<SocialPolicyDto> testGetListNativeQuery(String query) {
+        return repository.getResultListOfNativeQuery(query)
+                         .stream().map(e -> translate(e)).collect(Collectors.toList());     
+    }
+
+    @Override
+    public SocialPolicyDto testGetSingleNativeQuery(String query) {
+        return translate(repository.getSingleResultOfNativeQuery(query)); 
+    }
 }

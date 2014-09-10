@@ -10,7 +10,7 @@ public class ActionDto implements Serializable {
 	private String name;
 	
 	private List<CombatModifierDto> combatModifiers;
-	private List<UnitDto> aplicableTo;
+	private List<UnitTypeDto> aplicableTo;
 	
 	private static final long serialVersionUID = 1L;
         
@@ -34,10 +34,10 @@ public class ActionDto implements Serializable {
 	public void setCombatModifiers(List<CombatModifierDto> combatModifiers) {
 		this.combatModifiers = combatModifiers;
 	}
-	public List<UnitDto> getAplicableTo() {
+	public List<UnitTypeDto> getAplicableTo() {
 		return aplicableTo;
 	}
-	public void setAplicableTo(List<UnitDto> aplicableTo) {
+	public void setAplicableTo(List<UnitTypeDto> aplicableTo) {
 		this.aplicableTo = aplicableTo;
 	}
    

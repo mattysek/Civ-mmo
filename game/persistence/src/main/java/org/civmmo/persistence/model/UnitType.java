@@ -22,9 +22,11 @@ public class UnitType implements Serializable {
 	@Column(nullable=false)
 	private String name;
 	
-	@ManyToMany
+        @ManyToMany(cascade = CascadeType.ALL)
+	private List<Action> actions;
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Unit> units;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Promotion affectedPromotion;
 	
 	private static final long serialVersionUID = 1L;
@@ -58,6 +60,13 @@ public class UnitType implements Serializable {
 	public void setAffectedPromotion(Promotion affectedPromotion) {
 		this.affectedPromotion = affectedPromotion;
 	}
+        public List<Action> getActions() {
+		return actions;
+	}
+	public void setActions(List<Action> actions) {
+		this.actions = actions;
+	}
+        
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */

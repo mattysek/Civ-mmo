@@ -42,37 +42,37 @@ public class ActionRepositoryOgmNeoTest {
 
     @Inject
     ActionRepository repository;
-
+    
     @Inject
     UserTransaction utx;
 
     @PersistenceContext
     EntityManager em;
+    
+//    @Before
+//    public void preparePersistenceTest() {
+//        startTransaction();
+//    }
 
-    @Before
-    public void preparePersistenceTest() {
-        startTransaction();
-    }
+//    @After
+//    public void commitTransaction() {
+//        try {
+//            utx.commit();
+//            em.clear();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    @After
-    public void commitTransaction() {
-        try {
-            utx.commit();
-            em.clear();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void startTransaction() {
-        try {
-            utx.begin();
-            em.joinTransaction();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
+//    private void startTransaction() {
+//        try {
+//            utx.begin();
+//            em.joinTransaction();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
     
     @Test
     public void testCreate() {

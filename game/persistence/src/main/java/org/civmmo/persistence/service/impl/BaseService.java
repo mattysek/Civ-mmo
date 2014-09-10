@@ -5,7 +5,6 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import javax.transaction.UserTransaction;
 import org.civmmo.contracts.model.*;
 import org.civmmo.persistence.model.*;
 import org.jboss.logging.Logger;
@@ -40,7 +39,7 @@ public abstract class BaseService {
         set(result::setAplicableTo,
                 object::getAplicableTo,
                 e -> translate(e));
-
+        
         return result;
     }
 
@@ -852,9 +851,6 @@ public abstract class BaseService {
 
         Unit result = new Unit();
 
-        set(result::setActions,
-                object::getActions,
-                e -> translate(e));
         result.setCombatStrength(object.getCombatStrength());
         set(result::setControledTiles,
                 object::getControledTiles,
@@ -892,9 +888,6 @@ public abstract class BaseService {
 
         UnitDto result = new UnitDto();
 
-        set(result::setActions,
-                object::getActions,
-                e -> translate(e));
         result.setCombatStrength(object.getCombatStrength());
         set(result::setControledTiles,
                 object::getControledTiles,
@@ -932,6 +925,9 @@ public abstract class BaseService {
 
         UnitType result = new UnitType();
 
+        set(result::setActions,
+                object::getActions,
+                e -> translate(e));
         result.setAffectedPromotion(translate(object.getAffectedPromotion()));
         result.setId(object.getId());
         result.setName(object.getName());
@@ -949,6 +945,9 @@ public abstract class BaseService {
 
         UnitTypeDto result = new UnitTypeDto();
 
+        set(result::setActions,
+                object::getActions,
+                e -> translate(e));
         result.setAffectedPromotion(translate(object.getAffectedPromotion()));
         result.setId(object.getId());
         result.setName(object.getName());

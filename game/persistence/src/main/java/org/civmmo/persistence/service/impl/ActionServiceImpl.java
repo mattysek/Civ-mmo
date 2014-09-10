@@ -1,29 +1,16 @@
 package org.civmmo.persistence.service.impl;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.stream.Collectors;
 import javax.ejb.Stateless;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 import javax.inject.Inject;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
-import javax.transaction.UserTransaction;
 import org.civmmo.contracts.model.ActionDto;
 import org.civmmo.contracts.services.persistence.ActionService;
 import org.civmmo.persistence.model.Action;
 import org.civmmo.persistence.repository.ActionRepository;
-import org.jboss.logging.Logger;
 
 @Stateless
 public class ActionServiceImpl extends BaseService implements ActionService {
-    
-    
     
     @Inject
     private ActionRepository repository;
@@ -49,5 +36,45 @@ public class ActionServiceImpl extends BaseService implements ActionService {
     public List<ActionDto> getAll() {
         return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
     }
+
+    @Override
+    public List<ActionDto> getAllSQL() {
+        return repository.getAllUsingSQL().stream().map(e -> translate(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ActionDto> getAllMongo() {
+        return repository.getAllUsingMongo().stream().map(e -> translate(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ActionDto> getAllNeo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
+    @Override
+    public ActionDto getByIdSQL(long id) {
+        return translate(repository.getByIdUsingSQL(id));
+    }
+
+    @Override
+    public ActionDto getByIdMongo(long id) {
+        return translate(repository.getByIdUsingMongo(id));
+    }
+
+    @Override
+    public ActionDto getByIdNeo(long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<ActionDto> testGetListNativeQuery(String query) {
+        return repository.getResultListOfNativeQuery(query)
+                         .stream().map(e -> translate(e)).collect(Collectors.toList());     
+    }
+
+    @Override
+    public ActionDto testGetSingleNativeQuery(String query) {
+        return translate(repository.getSingleResultOfNativeQuery(query)); 
+    }
 }

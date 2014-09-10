@@ -20,7 +20,7 @@ public class Policy implements Serializable {
 	@Column(nullable=false)
 	private String name;
 	private int cost;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private SocialPolicy socialPolicy;
 	private static final long serialVersionUID = 1L;
 

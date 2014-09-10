@@ -22,11 +22,11 @@ public class Promotion implements Serializable {
 	@Column(nullable=false)
 	private String name;
 	
-	@OneToMany(mappedBy="affectedPromotion")
+	@OneToMany(mappedBy="affectedPromotion", cascade = CascadeType.ALL)
 	private List<UnitType> affectedBy;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Unit> units;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Technology> prerequisities;
 	
 	private static final long serialVersionUID = 1L;

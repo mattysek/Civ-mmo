@@ -38,4 +38,45 @@ public class CivilizationServiceImpl extends BaseService implements Civilization
     public List<CivilizationDto> getAll() {
         return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
     }
+    
+    @Override
+    public List<CivilizationDto> getAllSQL() {
+        return repository.getAllUsingSQL().stream().map(e -> translate(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CivilizationDto> getAllMongo() {
+        return repository.getAllUsingMongo().stream().map(e -> translate(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<CivilizationDto> getAllNeo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public CivilizationDto getByIdSQL(long id) {
+        return translate(repository.getByIdUsingSQL(id));
+    }
+
+    @Override
+    public CivilizationDto getByIdMongo(long id) {
+        return translate(repository.getByIdUsingMongo(id));
+    }
+
+    @Override
+    public CivilizationDto getByIdNeo(long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<CivilizationDto> testGetListNativeQuery(String query) {
+        return repository.getResultListOfNativeQuery(query)
+                         .stream().map(e -> translate(e)).collect(Collectors.toList());     
+    }
+
+    @Override
+    public CivilizationDto testGetSingleNativeQuery(String query) {
+        return translate(repository.getSingleResultOfNativeQuery(query)); 
+    }
 }

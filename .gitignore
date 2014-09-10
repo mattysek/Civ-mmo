@@ -215,3 +215,5 @@ pip-log.txt
 .mr.developer.cfg
 /game/contracts/target/
 /game/persistence/target/
+/game/logparser/target/
+/game/rest/target/

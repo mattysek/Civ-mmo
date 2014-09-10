@@ -25,13 +25,13 @@ public class Building implements Serializable {
 	private int maintenence;
 	private int specialistsSlots;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Technology> requiredTechnologies;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Resource> requiredResources;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<City> workedBy;
-	@OneToMany(mappedBy="currentlyConstructedBuilding")
+	@OneToMany(mappedBy="currentlyConstructedBuilding", cascade = CascadeType.ALL)
 	private List<City> currentlyConstructedBy;
 	
 	private static final long serialVersionUID = 1L;

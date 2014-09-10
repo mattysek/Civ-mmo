@@ -19,7 +19,7 @@ public class CombatModifier implements Serializable {
 	private long id;
 	private double value;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Action afectedAction;
 	
 	private static final long serialVersionUID = 1L;

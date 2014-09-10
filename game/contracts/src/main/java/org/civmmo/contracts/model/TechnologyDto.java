@@ -12,7 +12,7 @@ public class TechnologyDto implements Serializable {
 	
 	private List<ResourceDto> revealsResources;
 	private List<BuildingDto> revealsBuildings;
-	private List<UnitDto> revealsUnits;
+	private List<UnitTypeDto> revealsUnits;
 	private List<TechnologyDto> prerequisities;
 	private List<CivilizationDto> knownBy;
 	
@@ -57,11 +57,11 @@ public class TechnologyDto implements Serializable {
 		this.revealsBuildings = revealsBuildings;
 	}
 
-	public List<UnitDto> getRevealsUnits() {
+	public List<UnitTypeDto> getRevealsUnits() {
 		return revealsUnits;
 	}
 
-	public void setRevealsUnits(List<UnitDto> revealsUnits) {
+	public void setRevealsUnits(List<UnitTypeDto> revealsUnits) {
 		this.revealsUnits = revealsUnits;
 	}
 

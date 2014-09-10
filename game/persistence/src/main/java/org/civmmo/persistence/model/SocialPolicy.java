@@ -22,9 +22,9 @@ public class SocialPolicy implements Serializable {
 	private String name;
 	private int baseCost;
 	
-	@OneToMany(mappedBy="currentPolicy")
+	@OneToMany(mappedBy="currentPolicy", cascade = CascadeType.ALL)
 	private List<Civilization> currentlyUsedBy;
-	@OneToMany(mappedBy="socialPolicy")
+	@OneToMany(mappedBy="socialPolicy", cascade = CascadeType.ALL)
 	private List<Policy> policies;
 	
 	private static final long serialVersionUID = 1L;

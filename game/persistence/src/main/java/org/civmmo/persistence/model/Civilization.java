@@ -24,23 +24,23 @@ public class Civilization implements Serializable {
 	private long culture;
 	private long science;
 	private double happiness;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private SocialPolicy currentPolicy;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Technology currentlyStudiedTechnology;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Civilization> enemies;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Civilization> allies;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<SocialPolicy> availableSocialPolicies;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Policy> unlockedPolicies;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Technology> knownTechnologies;
-	@OneToMany(mappedBy="ownedBy")
+	@OneToMany(mappedBy="ownedBy", cascade = CascadeType.ALL)
 	private List<City> cities;
-	@OneToMany(mappedBy="ownedBy")
+	@OneToMany(mappedBy="ownedBy", cascade = CascadeType.ALL)
 	private List<Unit> units;
 	
 	private static final long serialVersionUID = 1L;

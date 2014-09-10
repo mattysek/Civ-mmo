@@ -29,22 +29,20 @@ public class Unit implements Serializable {
 	private int hitPoints;
 	private int experience;
         
-        @OneToOne
+        @OneToOne(cascade = CascadeType.ALL)
 	private Tile position;
 	
-	@ManyToMany
-	private List<Action> actions;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<UnitType> types;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Promotion> promotions;
-	@OneToMany(mappedBy="currentlyConstructedUnit")
+	@OneToMany(mappedBy="currentlyConstructedUnit", cascade = CascadeType.ALL)
 	private List<City> currentlyConstructedBy;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Civilization ownedBy;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Tile> visibleTiles;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Tile> controledTiles;
 	
 	private static final long serialVersionUID = 1L;
@@ -120,12 +118,6 @@ public class Unit implements Serializable {
 	}
 	public void setPosition(Tile position) {
 		this.position = position;
-	}
-	public List<Action> getActions() {
-		return actions;
-	}
-	public void setActions(List<Action> actions) {
-		this.actions = actions;
 	}
 	public List<UnitType> getTypes() {
 		return types;

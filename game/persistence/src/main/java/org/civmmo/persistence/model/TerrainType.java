@@ -26,9 +26,9 @@ public class TerrainType implements Serializable {
 	private int gold;
 	private int movementCost;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private CombatModifier combatModifier;
-	@OneToMany(mappedBy="terrainType")
+	@OneToMany(mappedBy="terrainType", cascade = CascadeType.ALL)
 	private List<Tile> ofTiles;
 	
 	private static final long serialVersionUID = 1L;

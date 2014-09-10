@@ -19,7 +19,7 @@ public class River implements Serializable {
 	@GeneratedValue
 	private long id;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Tile> tiles;
 	
 	private static final long serialVersionUID = 1L;

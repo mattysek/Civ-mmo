@@ -22,7 +22,7 @@ public class Improvement implements Serializable {
 	@Column(nullable=false)
 	private String name;
 	
-	@OneToMany(mappedBy="improvement")
+	@OneToMany(mappedBy="improvement", cascade = CascadeType.ALL)
 	private List<Tile> ofTiles;
 	
 	private static final long serialVersionUID = 1L;

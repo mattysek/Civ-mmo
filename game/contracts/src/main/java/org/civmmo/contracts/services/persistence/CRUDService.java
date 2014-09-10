@@ -1,5 +1,7 @@
 package org.civmmo.contracts.services.persistence;
 
+import java.util.List;
+
 public interface CRUDService<T> {
 
 	void create(T dto);
@@ -9,4 +11,6 @@ public interface CRUDService<T> {
 	void delete(T dto);
 	
 	T getById(Long id);
+        
+        List<T> getAll();
 }

@@ -9,6 +9,7 @@ public class UnitTypeDto implements Serializable {
 	private long id;
 	private String name;
 	
+        private List<ActionDto> actions;
 	private List<UnitDto> units;
 	private PromotionDto affectedPromotion;
 	
@@ -39,5 +40,11 @@ public class UnitTypeDto implements Serializable {
 	}
 	public void setAffectedPromotion(PromotionDto affectedPromotion) {
 		this.affectedPromotion = affectedPromotion;
+	}
+        public List<ActionDto> getActions() {
+		return actions;
+	}
+	public void setActions(List<ActionDto> actions) {
+		this.actions = actions;
 	}
 }

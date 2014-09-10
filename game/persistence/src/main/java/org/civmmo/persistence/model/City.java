@@ -29,28 +29,28 @@ public class City implements Serializable {
 	private int hitPoints;
 	private int citizens;
         
-        @OneToOne
+        @OneToOne(cascade = CascadeType.ALL)
 	private Tile center;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Civilization ownedBy;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Building currentlyConstructedBuilding;
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Building> constructedBuildings;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Building> workedBuildings;
-	@OneToMany(mappedBy="from")
+	@OneToMany(mappedBy="from",cascade = CascadeType.ALL)
 	private List<TradeRoute> tradeRoutesFrom;
-	@OneToMany(mappedBy="to")
+	@OneToMany(mappedBy="to",cascade = CascadeType.ALL)
 	private List<TradeRoute> tradeRoutesTo;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Tile> visibleTiles;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Tile> controledTiles;
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Tile> workedTiles;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Building currentlyConstructedUnit;
 	
 	private static final long serialVersionUID = 1L;
