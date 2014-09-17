@@ -1,6 +1,6 @@
 package org.civmmo.contracts.services.persistence;
 
-import org.civmmo.contracts.model.UnitDto;
+import org.civmmo.contracts.model.*;
 
 public interface UnitService extends CRUDService<UnitDto>,QueryableService<UnitDto> {
   

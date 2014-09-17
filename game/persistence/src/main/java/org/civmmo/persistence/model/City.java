@@ -1,7 +1,7 @@
 package org.civmmo.persistence.model;
 
 import java.io.Serializable;
-import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -51,7 +51,7 @@ public class City implements Serializable {
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Tile> workedTiles;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Building currentlyConstructedUnit;
+	private Unit currentlyConstructedUnit;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -189,10 +189,10 @@ public class City implements Serializable {
 	public void setWorkedTiles(List<Tile> workedTiles) {
 		this.workedTiles = workedTiles;
 	}
-	public Building getCurrentlyConstructedUnit() {
+	public Unit getCurrentlyConstructedUnit() {
 		return currentlyConstructedUnit;
 	}
-	public void setCurrentlyConstructedUnit(Building currentlyConstructedUnit) {
+	public void setCurrentlyConstructedUnit(Unit currentlyConstructedUnit) {
 		this.currentlyConstructedUnit = currentlyConstructedUnit;
 	}
 	/* (non-Javadoc)
@@ -257,5 +257,57 @@ public class City implements Serializable {
 			return false;
 		return true;
 	}
+
+    public void constructBuilding(Building building) {
+        if(this.constructedBuildings == null)
+        {
+            this.constructedBuildings = new ArrayList<>();
+        }
+        this.constructedBuildings.add(building);
+    }
+
+    public void workBuilding(Building building) {
+        if(this.workedBuildings == null)
+        {
+            this.workedBuildings = new ArrayList<>();
+        }
+        this.workedBuildings.add(building);
+    }
+
+    public void constructUnit(Unit unit) {
+        this.currentlyConstructedUnit = unit;
+    }
+
+    public boolean hasTradeRouteWith(City city) {
+        if(this.tradeRoutesTo == null)
+        {
+            return false;
+        }
+        return this.tradeRoutesTo.stream().anyMatch(t->t.getFrom().equals(city));
+    }
+
+    public void controlTile(Tile tile) {
+        if(this.controledTiles == null)
+        {
+            this.controledTiles = new ArrayList<>();
+        }
+        this.controledTiles.add(tile);
+    }
+
+    public void workTile(Tile tile) {
+        if(this.workedTiles == null)
+        {
+            this.workedTiles = new ArrayList<>();
+        }
+        this.workedTiles.add(tile);
+    }
+
+    public Unit attackUnit(Unit unit) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void computeWealthGrowth() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
 }

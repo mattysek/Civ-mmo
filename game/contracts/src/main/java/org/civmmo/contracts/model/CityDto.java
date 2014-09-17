@@ -27,7 +27,7 @@ public class CityDto implements Serializable {
 	private List<TileDto> visibleTiles;
 	private List<TileDto> controledTiles;
 	private List<TileDto> workedTiles;
-	private BuildingDto currentlyConstructedUnit;
+	private UnitDto currentlyConstructedUnit;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -162,10 +162,10 @@ public class CityDto implements Serializable {
 	public void setWorkedTiles(List<TileDto> workedTiles) {
 		this.workedTiles = workedTiles;
 	}
-	public BuildingDto getCurrentlyConstructedUnit() {
+	public UnitDto getCurrentlyConstructedUnit() {
 		return currentlyConstructedUnit;
 	}
-	public void setCurrentlyConstructedUnit(BuildingDto currentlyConstructedUnit) {
+	public void setCurrentlyConstructedUnit(UnitDto currentlyConstructedUnit) {
 		this.currentlyConstructedUnit = currentlyConstructedUnit;
 	}
 	
