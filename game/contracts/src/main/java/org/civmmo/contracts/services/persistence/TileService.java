@@ -4,4 +4,6 @@ import org.civmmo.contracts.model.TileDto;
 
 public interface TileService extends CRUDService<TileDto>,QueryableService<TileDto>  {
 
+  boolean isRiver(long tileId);
+
 }
