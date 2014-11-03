@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.civmmo.contracts.model.PromotionDto;
 import org.civmmo.contracts.services.persistence.PromotionService;
-import org.civmmo.persistence.model.Promotion;
+import org.civmmo.model.Promotion;
 import org.civmmo.persistence.repository.PromotionRepository;
 
 @Stateless
@@ -40,36 +40,6 @@ public class PromotionServiceImpl extends BaseService implements PromotionServic
         return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
     }
     
-    @Override
-    public List<PromotionDto> getAllSQL() {
-        return repository.getAllUsingSQL().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<PromotionDto> getAllMongo() {
-        return repository.getAllUsingMongo().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<PromotionDto> getAllNeo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    public PromotionDto getByIdSQL(long id) {
-        return translate(repository.getByIdUsingSQL(id));
-    }
-
-    @Override
-    public PromotionDto getByIdMongo(long id) {
-        return translate(repository.getByIdUsingMongo(id));
-    }
-
-    @Override
-    public PromotionDto getByIdNeo(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public List<PromotionDto> testGetListNativeQuery(String query) {
         return repository.getResultListOfNativeQuery(query)

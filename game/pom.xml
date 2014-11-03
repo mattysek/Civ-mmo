@@ -28,11 +28,13 @@
         </plugins>
     </build>
     <modules>
-  	<module>persistence</module>
+  	<module>persistence-jpa</module>
         <module>contracts</module>
         <module>logparser</module>
 	<module>civmmo</module>
-  </modules>
+        <module>model</module>
+        <module>persistence-neo</module>
+    </modules>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>

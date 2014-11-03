@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface CivilizationService extends CRUDService<CivilizationDto>,QueryableService<CivilizationDto> {
 
-  void unlockPolicy(long civilizationId, PolicyDto policyId);
-  void useSocialPolicy(long civilizationId, SocialPolicyDto socialPolicyId);
-  void ownSocialPolicy(long civilizationId, SocialPolicyDto socialPolicyId);
+  void unlockPolicy(long civilizationId, PolicyDto policy);
+  void useSocialPolicy(long civilizationId, SocialPolicyDto socialPolicy);
+  void ownSocialPolicy(long civilizationId, SocialPolicyDto socialPolicy);
   void declareWarBetween(long civilizationId, long civilization2Id);
   void declarePeaceBetween(long civilizationId, long civilization2Id);
   void ownCity(long civilizationId, CityDto city);

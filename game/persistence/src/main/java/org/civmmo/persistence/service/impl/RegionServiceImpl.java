@@ -5,8 +5,11 @@ import java.util.stream.Collectors;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.civmmo.contracts.model.RegionDto;
+import org.civmmo.contracts.model.ResourceDto;
+import org.civmmo.contracts.model.TerrainFeatureDto;
+import org.civmmo.contracts.model.TerrainTypeDto;
 import org.civmmo.contracts.services.persistence.RegionService;
-import org.civmmo.persistence.model.Region;
+import org.civmmo.model.Region;
 import org.civmmo.persistence.repository.RegionRepository;
 
 @Stateless
@@ -41,36 +44,6 @@ public class RegionServiceImpl extends BaseService implements RegionService {
     }
     
     @Override
-    public List<RegionDto> getAllSQL() {
-        return repository.getAllUsingSQL().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<RegionDto> getAllMongo() {
-        return repository.getAllUsingMongo().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<RegionDto> getAllNeo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    public RegionDto getByIdSQL(long id) {
-        return translate(repository.getByIdUsingSQL(id));
-    }
-
-    @Override
-    public RegionDto getByIdMongo(long id) {
-        return translate(repository.getByIdUsingMongo(id));
-    }
-
-    @Override
-    public RegionDto getByIdNeo(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public List<RegionDto> testGetListNativeQuery(String query) {
         return repository.getResultListOfNativeQuery(query)
                          .stream().map(e -> translate(e)).collect(Collectors.toList());     
@@ -80,5 +53,22 @@ public class RegionServiceImpl extends BaseService implements RegionService {
     public RegionDto testGetSingleNativeQuery(String query) {
         return translate(repository.getSingleResultOfNativeQuery(query)); 
     }
+
+    @Override
+    public void generateNewRegion(long regionId,long x, long y, List<TerrainTypeDto> types, List<TerrainFeatureDto> features, List<ResourceDto> resources) {
+        Region region = repository.getById(regionId);
+        region.generateNewRegion(x,y,
+                                 types.stream()
+                                      .map(t -> translate(t))
+                                      .collect(Collectors.toList()),
+                                 features.stream()
+                                      .map(t -> translate(t))
+                                      .collect(Collectors.toList()),
+                                 resources.stream()
+                                      .map(t -> translate(t))
+                                      .collect(Collectors.toList()));
+        repository.update(region);
+    }
+
 
 }

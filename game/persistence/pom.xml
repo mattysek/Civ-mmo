@@ -5,8 +5,8 @@
         <artifactId>game</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>persistence</artifactId>
-    <name>CIV MMO - ORM vs OGM - persistence</name>
+    <artifactId>persistence-jpa</artifactId>
+    <name>CIV MMO - ORM vs OGM - persistence JPA</name>
     <description>Persistence layer of CIV MMO</description>
   
     <properties>
@@ -95,6 +95,11 @@
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
         </dependency>
 
         <!-- Import the EJB API, we use provided scope as the API is included in 
@@ -187,6 +192,13 @@
         <dependency>
             <groupId>org.civ-mmo</groupId>
             <artifactId>contracts</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>jar</type>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.civ-mmo</groupId>
+            <artifactId>model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <type>jar</type>
         </dependency>

@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.civmmo.contracts.model.TechnologyDto;
 import org.civmmo.contracts.services.persistence.TechnologyService;
-import org.civmmo.persistence.model.Technology;
+import org.civmmo.model.Technology;
 import org.civmmo.persistence.repository.TechnologyRepository;
 
 @Stateless
@@ -40,36 +40,6 @@ public class TechnologyServiceImpl extends BaseService implements TechnologyServ
         return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
     }
     
-    @Override
-    public List<TechnologyDto> getAllSQL() {
-        return repository.getAllUsingSQL().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<TechnologyDto> getAllMongo() {
-        return repository.getAllUsingMongo().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<TechnologyDto> getAllNeo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    public TechnologyDto getByIdSQL(long id) {
-        return translate(repository.getByIdUsingSQL(id));
-    }
-
-    @Override
-    public TechnologyDto getByIdMongo(long id) {
-        return translate(repository.getByIdUsingMongo(id));
-    }
-
-    @Override
-    public TechnologyDto getByIdNeo(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public List<TechnologyDto> testGetListNativeQuery(String query) {
         return repository.getResultListOfNativeQuery(query)

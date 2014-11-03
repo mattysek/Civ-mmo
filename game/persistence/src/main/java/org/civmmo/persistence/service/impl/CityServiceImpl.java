@@ -9,8 +9,8 @@ import org.civmmo.contracts.model.CityDto;
 import org.civmmo.contracts.model.TileDto;
 import org.civmmo.contracts.model.UnitDto;
 import org.civmmo.contracts.services.persistence.CityService;
-import org.civmmo.persistence.model.City;
-import org.civmmo.persistence.model.Unit;
+import org.civmmo.model.City;
+import org.civmmo.model.Unit;
 import org.civmmo.persistence.repository.CityRepository;
 
 @Stateless
@@ -44,36 +44,6 @@ public class CityServiceImpl extends BaseService implements CityService {
         return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
     }
     
-    @Override
-    public List<CityDto> getAllSQL() {
-        return repository.getAllUsingSQL().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<CityDto> getAllMongo() {
-        return repository.getAllUsingMongo().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<CityDto> getAllNeo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    public CityDto getByIdSQL(long id) {
-        return translate(repository.getByIdUsingSQL(id));
-    }
-
-    @Override
-    public CityDto getByIdMongo(long id) {
-        return translate(repository.getByIdUsingMongo(id));
-    }
-
-    @Override
-    public CityDto getByIdNeo(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public List<CityDto> testGetListNativeQuery(String query) {
         return repository.getResultListOfNativeQuery(query)
@@ -128,11 +98,10 @@ public class CityServiceImpl extends BaseService implements CityService {
     }
 
     @Override
-    public UnitDto attackUnit(long cityId, UnitDto unit) {
+    public void attackUnit(long cityId, UnitDto unit) {
         City city = repository.getById(cityId);
-        Unit result = city.attackUnit(translate(unit));
+        city.attackUnit(translate(unit));
         repository.update(city);
-        return translate(result);
     }
 
     @Override

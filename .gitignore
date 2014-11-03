@@ -217,3 +217,5 @@ pip-log.txt
 /game/persistence/target/
 /game/logparser/target/
 /game/rest/target/
+/game/model/target/
+/game/persistence-neo/target/

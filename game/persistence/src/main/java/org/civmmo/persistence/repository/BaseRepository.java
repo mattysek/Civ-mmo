@@ -40,17 +40,7 @@ public interface BaseRepository <T>{
      */
     List<T> getAll();
     
-    T getByIdUsingMongo(Long id);
-    List<T> getAllUsingMongo();
-    
-    T getByIdUsingSQL(Long id);
-    List<T> getAllUsingSQL();
-    
-    
-    
-    T getSingleResultOfQuery(String query);
     T getSingleResultOfNativeQuery(String query);
     
-    List<T> getResultListOfQuery(String query);
     List<T> getResultListOfNativeQuery(String query);
 }

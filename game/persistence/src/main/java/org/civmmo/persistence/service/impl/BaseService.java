@@ -6,6 +6,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import org.civmmo.contracts.model.*;
+import org.civmmo.model.*;
 import org.civmmo.persistence.model.*;
 import org.jboss.logging.Logger;
 
@@ -27,7 +28,7 @@ public abstract class BaseService {
             return null;
         }
 
-        Action result = new Action();
+        Action result = new ActionEntity();
 
         result.setId(object.getId());
         result.setName(object.getName());
@@ -69,7 +70,7 @@ public abstract class BaseService {
             return null;
         }
 
-        CombatModifier result = new CombatModifier();
+        CombatModifier result = new CombatModifierEntity();
 
         result.setId(object.getId());
         result.setValue(object.getValue());
@@ -97,7 +98,7 @@ public abstract class BaseService {
             return null;
         }
 
-        Building result = new Building();
+        Building result = new BuildingEntity();
 
         result.setId(object.getId());
         result.setName(object.getName());
@@ -155,7 +156,7 @@ public abstract class BaseService {
             return null;
         }
 
-        City result = new City();
+        City result = new CityEntity();
         result.setCenter(translate(object.getCenter()));
         result.setCitizens(object.getCitizens());
         set(result::setConstructedBuildings,
@@ -245,7 +246,7 @@ public abstract class BaseService {
             return null;
         }
 
-        Civilization result = new Civilization();
+        Civilization result = new CivilizationEntity();
 
         set(result::setAllies,
                 object::getAllies,
@@ -325,7 +326,7 @@ public abstract class BaseService {
             return null;
         }
 
-        Improvement result = new Improvement();
+        Improvement result = new ImprovementEntity();
 
         result.setId(object.getId());
         result.setName(object.getName());
@@ -357,7 +358,7 @@ public abstract class BaseService {
             return null;
         }
 
-        Policy result = new Policy();
+        Policy result = new PolicyEntity();
 
         result.setCost(object.getCost());
         result.setId(object.getId());
@@ -387,7 +388,7 @@ public abstract class BaseService {
             return null;
         }
 
-        Promotion result = new Promotion();
+        Promotion result = new PromotionEntity();
 
         set(result::setAffectedBy,
                 object::getAffectedBy,
@@ -431,7 +432,7 @@ public abstract class BaseService {
             return null;
         }
 
-        Region result = new Region();
+        Region result = new RegionEntity();
 
         result.setId(object.getId());
         set(result::setTiles,
@@ -461,7 +462,7 @@ public abstract class BaseService {
             return null;
         }
 
-        Resource result = new Resource();
+        Resource result = new ResourceEntity();
 
         set(result::setCanBeFoundOnTiles,
                 object::getCanBeFoundOnTiles,
@@ -517,7 +518,7 @@ public abstract class BaseService {
             return null;
         }
 
-        River result = new River();
+        River result = new RiverEntity();
 
         result.setId(object.getId());
         set(result::setTiles,
@@ -547,7 +548,7 @@ public abstract class BaseService {
             return null;
         }
 
-        SocialPolicy result = new SocialPolicy();
+        SocialPolicy result = new SocialPolicyEntity();
 
         result.setId(object.getId());
         result.setBaseCost(object.getBaseCost());
@@ -587,7 +588,7 @@ public abstract class BaseService {
             return null;
         }
 
-        Technology result = new Technology();
+        Technology result = new TechnologyEntity();
 
         result.setCost(object.getCost());
         result.setId(object.getId());
@@ -645,7 +646,7 @@ public abstract class BaseService {
             return null;
         }
 
-        TerrainFeature result = new TerrainFeature();
+        TerrainFeature result = new TerrainFeatureEntity();
 
         result.setCombatModifier(translate(object.getCombatModifier()));
         result.setFood(object.getFood());
@@ -687,7 +688,7 @@ public abstract class BaseService {
             return null;
         }
 
-        TerrainType result = new TerrainType();
+        TerrainType result = new TerrainTypeEntity();
 
         result.setCombatModifier(translate(object.getCombatModifier()));
         result.setFood(object.getFood());
@@ -729,7 +730,7 @@ public abstract class BaseService {
             return null;
         }
 
-        Tile result = new Tile();
+        Tile result = new TileEntity();
 
         result.setCity(translate(object.getCity()));
         result.setCivilUnit(translate(object.getCivilUnit()));
@@ -815,7 +816,7 @@ public abstract class BaseService {
             return null;
         }
 
-        TradeRoute result = new TradeRoute();
+        TradeRoute result = new TradeRouteEntity();
 
         result.setFrom(translate(object.getFrom()));
         result.setId(object.getId());
@@ -849,7 +850,7 @@ public abstract class BaseService {
             return null;
         }
 
-        Unit result = new Unit();
+        Unit result = new UnitEntity();
 
         result.setCombatStrength(object.getCombatStrength());
         set(result::setControledTiles,
@@ -923,7 +924,7 @@ public abstract class BaseService {
             return null;
         }
 
-        UnitType result = new UnitType();
+        UnitType result = new UnitTypeEntity();
 
         set(result::setActions,
                 object::getActions,

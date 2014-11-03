@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.civmmo.contracts.model.TileDto;
 import org.civmmo.contracts.services.persistence.TileService;
-import org.civmmo.persistence.model.Tile;
+import org.civmmo.model.Tile;
 import org.civmmo.persistence.repository.TileRepository;
 
 @Stateless
@@ -41,36 +41,6 @@ public class TileServiceImpl extends BaseService implements TileService {
     }
     
     @Override
-    public List<TileDto> getAllSQL() {
-        return repository.getAllUsingSQL().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<TileDto> getAllMongo() {
-        return repository.getAllUsingMongo().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<TileDto> getAllNeo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    public TileDto getByIdSQL(long id) {
-        return translate(repository.getByIdUsingSQL(id));
-    }
-
-    @Override
-    public TileDto getByIdMongo(long id) {
-        return translate(repository.getByIdUsingMongo(id));
-    }
-
-    @Override
-    public TileDto getByIdNeo(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public List<TileDto> testGetListNativeQuery(String query) {
         return repository.getResultListOfNativeQuery(query)
                          .stream().map(e -> translate(e)).collect(Collectors.toList());     
@@ -79,5 +49,11 @@ public class TileServiceImpl extends BaseService implements TileService {
     @Override
     public TileDto testGetSingleNativeQuery(String query) {
         return translate(repository.getSingleResultOfNativeQuery(query)); 
+    }
+
+    @Override
+    public boolean isRiver(long tileId) {
+        Tile tile = repository.getById(tileId);
+        return tile.isRiver();
     }
 }

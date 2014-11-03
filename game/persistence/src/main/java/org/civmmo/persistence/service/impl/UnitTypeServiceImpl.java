@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.civmmo.contracts.model.UnitTypeDto;
 import org.civmmo.contracts.services.persistence.UnitTypeService;
-import org.civmmo.persistence.model.UnitType;
+import org.civmmo.model.UnitType;
 import org.civmmo.persistence.repository.UnitTypeRepository;
 
 @Stateless
@@ -40,36 +40,6 @@ public class UnitTypeServiceImpl extends BaseService implements UnitTypeService 
         return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
     }
     
-    @Override
-    public List<UnitTypeDto> getAllSQL() {
-        return repository.getAllUsingSQL().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<UnitTypeDto> getAllMongo() {
-        return repository.getAllUsingMongo().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<UnitTypeDto> getAllNeo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    public UnitTypeDto getByIdSQL(long id) {
-        return translate(repository.getByIdUsingSQL(id));
-    }
-
-    @Override
-    public UnitTypeDto getByIdMongo(long id) {
-        return translate(repository.getByIdUsingMongo(id));
-    }
-
-    @Override
-    public UnitTypeDto getByIdNeo(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public List<UnitTypeDto> testGetListNativeQuery(String query) {
         return repository.getResultListOfNativeQuery(query)

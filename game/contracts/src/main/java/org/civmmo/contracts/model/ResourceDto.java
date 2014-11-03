@@ -15,7 +15,7 @@ public class ResourceDto implements Serializable {
 	private double happiness;
 	
 	private ImprovementDto improvement;
-	private ResourceDto revealedBy;
+	private TechnologyDto revealedBy;
 	private List<BuildingDto> requiredByBuildings;
 	private List<UnitDto> requiredByUnits;
 	private List<TileDto> canBeFoundOnTiles;
@@ -70,10 +70,10 @@ public class ResourceDto implements Serializable {
 	public void setImprovement(ImprovementDto improvement) {
 		this.improvement = improvement;
 	}
-	public ResourceDto getRevealedBy() {
+	public TechnologyDto getRevealedBy() {
 		return revealedBy;
 	}
-	public void setRevealedBy(ResourceDto revealedBy) {
+	public void setRevealedBy(TechnologyDto revealedBy) {
 		this.revealedBy = revealedBy;
 	}
 	public List<BuildingDto> getRequiredByBuildings() {

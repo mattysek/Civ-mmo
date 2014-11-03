@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.civmmo.contracts.model.PolicyDto;
 import org.civmmo.contracts.services.persistence.PolicyService;
-import org.civmmo.persistence.model.Policy;
+import org.civmmo.model.Policy;
 import org.civmmo.persistence.repository.PolicyRepository;
 
 @Stateless
@@ -40,36 +40,6 @@ public class PolicyServiceImpl extends BaseService implements PolicyService {
         return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
     }
     
-    @Override
-    public List<PolicyDto> getAllSQL() {
-        return repository.getAllUsingSQL().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<PolicyDto> getAllMongo() {
-        return repository.getAllUsingMongo().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<PolicyDto> getAllNeo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    public PolicyDto getByIdSQL(long id) {
-        return translate(repository.getByIdUsingSQL(id));
-    }
-
-    @Override
-    public PolicyDto getByIdMongo(long id) {
-        return translate(repository.getByIdUsingMongo(id));
-    }
-
-    @Override
-    public PolicyDto getByIdNeo(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public List<PolicyDto> testGetListNativeQuery(String query) {
         return repository.getResultListOfNativeQuery(query)

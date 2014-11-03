@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 import org.civmmo.contracts.model.ActionDto;
 import org.civmmo.contracts.services.persistence.ActionService;
-import org.civmmo.persistence.model.Action;
+import org.civmmo.model.Action;
 import org.civmmo.persistence.repository.ActionRepository;
 import org.civmmo.persistence.repository.impl.ActionRepositoryImpl;
 import org.civmmo.persistence.service.impl.ActionServiceImpl;

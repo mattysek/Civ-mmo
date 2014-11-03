@@ -6,7 +6,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
-import org.civmmo.persistence.model.Action;
+import org.civmmo.model.Action;
+import org.civmmo.persistence.model.ActionEntity;
 import org.civmmo.persistence.repository.ActionRepository;
 import org.civmmo.persistence.repository.impl.ActionRepositoryImpl;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -133,7 +134,7 @@ public class ActionRepositoryOgmInfinispanTest {
     }
 
     public Action getAction() {
-        Action a = new Action();
+        Action a = new ActionEntity();
         a.setName("Fortify");
         return a;
     }

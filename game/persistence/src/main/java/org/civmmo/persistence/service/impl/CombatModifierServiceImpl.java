@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.civmmo.contracts.model.CombatModifierDto;
 import org.civmmo.contracts.services.persistence.CombatModifierService;
-import org.civmmo.persistence.model.CombatModifier;
+import org.civmmo.model.CombatModifier;
 import org.civmmo.persistence.repository.CombatModifierRepository;
 
 @Stateless
@@ -40,36 +40,6 @@ public class CombatModifierServiceImpl extends BaseService implements CombatModi
         return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
     }
     
-    @Override
-    public List<CombatModifierDto> getAllSQL() {
-        return repository.getAllUsingSQL().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<CombatModifierDto> getAllMongo() {
-        return repository.getAllUsingMongo().stream().map(e -> translate(e)).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<CombatModifierDto> getAllNeo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    @Override
-    public CombatModifierDto getByIdSQL(long id) {
-        return translate(repository.getByIdUsingSQL(id));
-    }
-
-    @Override
-    public CombatModifierDto getByIdMongo(long id) {
-        return translate(repository.getByIdUsingMongo(id));
-    }
-
-    @Override
-    public CombatModifierDto getByIdNeo(long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public List<CombatModifierDto> testGetListNativeQuery(String query) {
         return repository.getResultListOfNativeQuery(query)

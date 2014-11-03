@@ -1,8 +1,14 @@
 package org.civmmo.contracts.services.persistence;
 
-import org.civmmo.contracts.model.RegionDto;
+import java.util.List;
+import org.civmmo.contracts.model.*;
 
 public interface RegionService extends CRUDService<RegionDto>,QueryableService<RegionDto> {
 
-     RegionDto generateNewRegion();
+     void generateNewRegion(long regionId,
+                            long x,
+                            long y,
+                            List<TerrainTypeDto> types, 
+                            List<TerrainFeatureDto> features,
+                            List<ResourceDto> resources);
 }
