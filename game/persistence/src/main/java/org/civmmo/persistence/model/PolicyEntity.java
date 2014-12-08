@@ -22,7 +22,7 @@ public class PolicyEntity extends Policy implements Serializable {
 	private String name;
 	private int cost;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private SocialPolicy socialPolicy;
+	private SocialPolicyEntity socialPolicy;
 	private static final long serialVersionUID = 1L;
 
 	public PolicyEntity() {
@@ -53,6 +53,6 @@ public class PolicyEntity extends Policy implements Serializable {
 		return socialPolicy;
 	}
 	public void setSocialPolicy(SocialPolicy socialPolicy) {
-		this.socialPolicy = socialPolicy;
+		this.socialPolicy = (SocialPolicyEntity)socialPolicy;
 	}
 }

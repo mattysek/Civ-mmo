@@ -34,22 +34,22 @@ public class PolicyServiceImpl extends BaseService implements PolicyService {
 
     @Override
     public PolicyDto getById(Long id) {
-        return runInTransaction(() -> translate(repository.getById(id)));
+        return runInTransaction(() -> translate(repository.getById(id),START_LEVEL));
     }
     
     @Override
     public List<PolicyDto> getAll() {
-        return runInTransaction(() -> repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList()));
+        return runInTransaction(() -> repository.getAll().stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList()));
     }
 
     @Override
     public List<PolicyDto> testGetListNativeQuery(String query) {
         return runInTransaction(() -> repository.getResultListOfNativeQuery(query)
-                         .stream().map(e -> translate(e)).collect(Collectors.toList()));     
+                         .stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList()));     
     }
 
     @Override
     public PolicyDto testGetSingleNativeQuery(String query) {
-        return runInTransaction(() -> translate(repository.getSingleResultOfNativeQuery(query))); 
+        return runInTransaction(() -> translate(repository.getSingleResultOfNativeQuery(query),START_LEVEL)); 
     }
 }

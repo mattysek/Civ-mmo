@@ -3,6 +3,7 @@ package org.civmmo.persistence.model;
 import org.civmmo.model.*;
 import java.io.Serializable;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -29,15 +30,15 @@ public class ResourceEntity extends Resource implements Serializable {
 	private double happiness;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Improvement improvement;
+	private ImprovementEntity improvement;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Technology revealedBy;
+	private TechnologyEntity revealedBy;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Building> requiredByBuildings;
+	private List<BuildingEntity> requiredByBuildings;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Unit> requiredByUnits;
+	private List<UnitEntity> requiredByUnits;
 	@OneToMany(mappedBy="resource", cascade = CascadeType.ALL)
-	private List<Tile> canBeFoundOnTiles;
+	private List<TileEntity> canBeFoundOnTiles;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -90,30 +91,30 @@ public class ResourceEntity extends Resource implements Serializable {
 		return improvement;
 	}
 	public void setImprovement(Improvement improvement) {
-		this.improvement = improvement;
+		this.improvement = (ImprovementEntity)improvement;
 	}
 	public Technology getRevealedBy() {
 		return revealedBy;
 	}
 	public void setRevealedBy(Technology revealedBy) {
-		this.revealedBy = revealedBy;
+		this.revealedBy = (TechnologyEntity)revealedBy;
 	}
 	public List<Building> getRequiredByBuildings() {
-		return requiredByBuildings;
+		return new ArrayList<>(requiredByBuildings);
 	}
 	public void setRequiredByBuildings(List<Building> requiredByBuildings) {
-		this.requiredByBuildings = requiredByBuildings;
+		this.requiredByBuildings = (List<BuildingEntity>)(List<?>)requiredByBuildings;
 	}
 	public List<Unit> getRequiredByUnits() {
-		return requiredByUnits;
+		return new ArrayList<>(requiredByUnits);
 	}
 	public void setRequiredByUnits(List<Unit> requiredByUnits) {
-		this.requiredByUnits = requiredByUnits;
+		this.requiredByUnits = (List<UnitEntity>)(List<?>)requiredByUnits;
 	}
 	public List<Tile> getCanBeFoundOnTiles() {
-		return canBeFoundOnTiles;
+		return new ArrayList<>(canBeFoundOnTiles);
 	}
 	public void setCanBeFoundOnTiles(List<Tile> canBeFoundOnTiles) {
-		this.canBeFoundOnTiles = canBeFoundOnTiles;
+		this.canBeFoundOnTiles = (List<TileEntity>)(List<?>)canBeFoundOnTiles;
 	}
 }

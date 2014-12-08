@@ -37,23 +37,23 @@ public class RegionServiceImpl extends BaseService implements RegionService {
 
     @Override
     public RegionDto getById(Long id) {
-        return runInTransaction(() -> translate(repository.getById(id)));
+        return runInTransaction(() -> translate(repository.getById(id),START_LEVEL));
     }
     
     @Override
     public List<RegionDto> getAll() {
-        return runInTransaction(() -> repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList()));
+        return runInTransaction(() -> repository.getAll().stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList()));
     }
 
     @Override
     public List<RegionDto> testGetListNativeQuery(String query) {
         return runInTransaction(() -> repository.getResultListOfNativeQuery(query)
-                         .stream().map(e -> translate(e)).collect(Collectors.toList()));     
+                         .stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList()));     
     }
 
     @Override
     public RegionDto testGetSingleNativeQuery(String query) {
-        return runInTransaction(() -> translate(repository.getSingleResultOfNativeQuery(query))); 
+        return runInTransaction(() -> translate(repository.getSingleResultOfNativeQuery(query),START_LEVEL)); 
     }
 
     @Override

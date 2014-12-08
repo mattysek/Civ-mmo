@@ -3,6 +3,7 @@ package org.civmmo.persistence.model;
 import org.civmmo.model.*;
 import java.io.Serializable;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -24,15 +25,15 @@ public class TechnologyEntity extends Technology implements Serializable {
 	private long cost;
 	
 	@OneToMany(mappedBy="revealedBy", cascade = CascadeType.ALL)
-	private List<Resource> revealsResources;
+	private List<ResourceEntity> revealsResources;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Building> revealsBuildings;
+	private List<BuildingEntity> revealsBuildings;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<UnitType> revealsUnits;
+	private List<UnitTypeEntity> revealsUnits;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Technology> prerequisities;
+	private List<TechnologyEntity> prerequisities;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Civilization> knownBy;
+	private List<CivilizationEntity> knownBy;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -64,42 +65,42 @@ public class TechnologyEntity extends Technology implements Serializable {
 	}
 
 	public List<Resource> getRevealsResources() {
-		return revealsResources;
+		return new ArrayList<>(revealsResources);
 	}
 
 	public void setRevealsResources(List<Resource> revealsResources) {
-		this.revealsResources = revealsResources;
+		this.revealsResources = (List<ResourceEntity>)(List<?>)revealsResources;
 	}
 
 	public List<Building> getRevealsBuildings() {
-		return revealsBuildings;
+		return new ArrayList<>(revealsBuildings);
 	}
 
 	public void setRevealsBuildings(List<Building> revealsBuildings) {
-		this.revealsBuildings = revealsBuildings;
+		this.revealsBuildings = (List<BuildingEntity>)(List<?>)revealsBuildings;
 	}
 
 	public List<UnitType> getRevealsUnits() {
-		return revealsUnits;
+		return new ArrayList<>(revealsUnits);
 	}
 
 	public void setRevealsUnits(List<UnitType> revealsUnits) {
-		this.revealsUnits = revealsUnits;
+		this.revealsUnits = (List<UnitTypeEntity>)(List<?>)revealsUnits;
 	}
 
 	public List<Technology> getPrerequisities() {
-		return prerequisities;
+		return new ArrayList<>(prerequisities);
 	}
 
 	public void setPrerequisities(List<Technology> prerequisities) {
-		this.prerequisities = prerequisities;
+		this.prerequisities = (List<TechnologyEntity>)(List<?>)prerequisities;
 	}
 
 	public List<Civilization> getKnownBy() {
-		return knownBy;
+		return new ArrayList<>(knownBy);
 	}
 
 	public void setKnownBy(List<Civilization> knownBy) {
-		this.knownBy = knownBy;
+		this.knownBy = (List<CivilizationEntity>)(List<?>)knownBy;
 	}
 }

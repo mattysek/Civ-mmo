@@ -37,6 +37,8 @@ public abstract class BaseService {
                 object::getCombatModifiers,
                 e -> translate(e));
         
+        result.getCombatModifiers().stream().forEach(c -> c.setAfectedAction(result));
+        
         set(result::setAplicableTo,
                 object::getAplicableTo,
                 e -> translate(e));
@@ -52,11 +54,11 @@ public abstract class BaseService {
         ActionDto result = new ActionDto();
 
         result.setId(object.getId());
-        result.setName(object.getName());
+        result.setName(object.getName() + object.getCombatModifiers().get(0).getAfectedAction().getName());
 
-        set(result::setCombatModifiers,
-                object::getCombatModifiers,
-                e -> translate(e));
+//        set(result::setCombatModifiers,
+//                object::getCombatModifiers,
+//                e -> translate(e));
         
         set(result::setAplicableTo,
                 object::getAplicableTo,

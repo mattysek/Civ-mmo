@@ -4,6 +4,7 @@ import org.civmmo.model.*;
 
 import java.io.Serializable;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -24,9 +25,9 @@ public class ActionEntity extends Action implements Serializable {
 	private String name;
 	
 	@OneToMany(mappedBy="afectedAction", cascade = CascadeType.ALL)
-	private List<CombatModifier> combatModifiers;
+	private List<CombatModifierEntity> combatModifiers;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<UnitType> aplicableTo;
+	private List<UnitTypeEntity> aplicableTo;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -48,15 +49,15 @@ public class ActionEntity extends Action implements Serializable {
 		this.name = name;
 	}
 	public List<CombatModifier> getCombatModifiers() {
-		return combatModifiers;
+		return new ArrayList<>(combatModifiers);
 	}
 	public void setCombatModifiers(List<CombatModifier> combatModifiers) {
-		this.combatModifiers = combatModifiers;
+		this.combatModifiers = (List<CombatModifierEntity>)(List<?>)combatModifiers;
 	}
 	public List<UnitType> getAplicableTo() {
-		return aplicableTo;
+		return new ArrayList<>(aplicableTo);
 	}
 	public void setAplicableTo(List<UnitType> aplicableTo) {
-		this.aplicableTo = aplicableTo;
+		this.aplicableTo = (List<UnitTypeEntity>)(List<?>)aplicableTo;
 	}   
 }

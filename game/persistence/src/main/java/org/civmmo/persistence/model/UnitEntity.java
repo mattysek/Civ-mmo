@@ -31,21 +31,21 @@ public class UnitEntity extends Unit implements Serializable {
 	private int hitPoints;
 	private int experience;
         
-        @OneToOne(cascade = CascadeType.ALL)
-	private Tile position;
+    @OneToOne(cascade = CascadeType.ALL)
+	private TileEntity position;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<UnitType> types;
+	private List<UnitTypeEntity> types;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Promotion> promotions;
+	private List<PromotionEntity> promotions;
 	@OneToMany(mappedBy="currentlyConstructedUnit", cascade = CascadeType.ALL)
-	private List<City> currentlyConstructedBy;
+	private List<CityEntity> currentlyConstructedBy;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Civilization ownedBy;
+	private CivilizationEntity ownedBy;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Tile> visibleTiles;
+	private List<TileEntity> visibleTiles;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Tile> controledTiles;
+	private List<TileEntity> controledTiles;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -119,43 +119,43 @@ public class UnitEntity extends Unit implements Serializable {
 		return position;
 	}
 	public void setPosition(Tile position) {
-		this.position = position;
+		this.position = (TileEntity)position;
 	}
 	public List<UnitType> getTypes() {
-		return types;
+		return new ArrayList<>(types);
 	}
 	public void setTypes(List<UnitType> types) {
-		this.types = types;
+		this.types = (List<UnitTypeEntity>)(List<?>)types;
 	}
 	public List<Promotion> getPromotions() {
-		return promotions;
+		return new ArrayList<>(promotions);
 	}
 	public void setPromotions(List<Promotion> promotions) {
-		this.promotions = promotions;
+		this.promotions = (List<PromotionEntity>)(List<?>)promotions;
 	}
 	public List<City> getCurrentlyConstructedBy() {
-		return currentlyConstructedBy;
+		return new ArrayList<>(currentlyConstructedBy);
 	}
 	public void setCurrentlyConstructedBy(List<City> currentlyConstructedBy) {
-		this.currentlyConstructedBy = currentlyConstructedBy;
+		this.currentlyConstructedBy = (List<CityEntity>)(List<?>)currentlyConstructedBy;
 	}
 	public Civilization getOwnedBy() {
 		return ownedBy;
 	}
 	public void setOwnedBy(Civilization ownedBy) {
-		this.ownedBy = ownedBy;
+		this.ownedBy = (CivilizationEntity)ownedBy;
 	}
 	public List<Tile> getVisibleTiles() {
-		return visibleTiles;
+		return new ArrayList<>(visibleTiles);
 	}
 	public void setVisibleTiles(List<Tile> visibleTiles) {
-		this.visibleTiles = visibleTiles;
+		this.visibleTiles = (List<TileEntity>)(List<?>)visibleTiles;
 	}
 	public List<Tile> getControledTiles() {
-		return controledTiles;
+		return new ArrayList<>(controledTiles);
 	}
 	public void setControledTiles(List<Tile> controledTiles) {
-		this.controledTiles = controledTiles;
+		this.controledTiles = (List<TileEntity>)(List<?>)controledTiles;
 	}
 	
 }

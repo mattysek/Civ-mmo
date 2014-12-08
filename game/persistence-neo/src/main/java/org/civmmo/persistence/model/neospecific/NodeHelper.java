@@ -23,28 +23,38 @@ public class NodeHelper {
     
     public static <T> void setProperty(Node node, String name, T value)
     {
-        node.setProperty(name, value);
+        if(value != null)
+        {
+            node.setProperty(name, value);
+        }
     }
     
     public static <T> List<T> getRelationship(Node node, RelationshipType type, Function<Node, T> translator)
     {
         List<T> result = new ArrayList();
-        node.getRelationships(type).forEach(e -> result.add(translator.apply(e.getEndNode())));
+        node.getRelationships(type).forEach(e -> result.add(translator.apply(e.getOtherNode(node))));
         return result;
     }
     
     public static <T> void setRelationship(Node node, List<T> list, RelationshipType type, Function<T,Node> translator)
     {
-        list.forEach(e -> node.createRelationshipTo(translator.apply(e), type));
+        list.forEach(e -> {
+                    if(e != null)
+                    {
+                        node.createRelationshipTo(translator.apply(e), type);
+                    }});
     }
     
     public static <T> T getSingleRelationship(Node node, RelationshipType type, Function<Node, T> translator)
     {
-        return translator.apply(node.getSingleRelationship(type, Direction.BOTH).getEndNode());
+        return translator.apply(node.getSingleRelationship(type, Direction.BOTH).getOtherNode(node));
     }
     
     public static <T> void setSingleRelationship(Node node, T item, RelationshipType type, Function<T,Node> translator)
     {
-        node.createRelationshipTo(translator.apply(item), type);
+        if(item != null)
+        {
+            node.createRelationshipTo(translator.apply(item), type);
+        }
     }
 }

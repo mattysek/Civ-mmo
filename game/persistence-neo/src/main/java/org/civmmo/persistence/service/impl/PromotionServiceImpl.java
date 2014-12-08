@@ -34,22 +34,22 @@ public class PromotionServiceImpl extends BaseService implements PromotionServic
 
     @Override
     public PromotionDto getById(Long id) {
-        return runInTransaction(() -> translate(repository.getById(id)));
+        return runInTransaction(() -> translate(repository.getById(id),START_LEVEL));
     }
     
     @Override
     public List<PromotionDto> getAll() {
-        return runInTransaction(() -> repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList()));
+        return runInTransaction(() -> repository.getAll().stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList()));
     }
 
     @Override
     public List<PromotionDto> testGetListNativeQuery(String query) {
         return runInTransaction(() -> repository.getResultListOfNativeQuery(query)
-                         .stream().map(e -> translate(e)).collect(Collectors.toList()));     
+                         .stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList()));     
     }
 
     @Override
     public PromotionDto testGetSingleNativeQuery(String query) {
-        return runInTransaction(() -> translate(repository.getSingleResultOfNativeQuery(query))); 
+        return runInTransaction(() -> translate(repository.getSingleResultOfNativeQuery(query),START_LEVEL)); 
     }
 }

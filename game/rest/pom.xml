@@ -96,18 +96,18 @@
             <version>0.0.1-SNAPSHOT</version>
             <type>jar</type>
         </dependency>
-<!--        <dependency>
+        <dependency>
             <groupId>org.civ-mmo</groupId>
             <artifactId>persistence-jpa</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <type>jar</type>
-        </dependency>-->
-        <dependency>
+        </dependency>
+<!--        <dependency>
             <groupId>org.civ-mmo</groupId>
             <artifactId>persistence-neo</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <type>jar</type>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <build>

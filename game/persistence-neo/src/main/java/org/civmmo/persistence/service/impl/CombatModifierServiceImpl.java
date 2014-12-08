@@ -34,22 +34,22 @@ public class CombatModifierServiceImpl extends BaseService implements CombatModi
 
     @Override
     public CombatModifierDto getById(Long id) {
-        return runInTransaction(() -> translate(repository.getById(id)));
+        return runInTransaction(() -> translate(repository.getById(id),0));
     }
     
     @Override
     public List<CombatModifierDto> getAll() {
-        return runInTransaction(() -> repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList()));
+        return runInTransaction(() -> repository.getAll().stream().map(e -> translate(e,0)).collect(Collectors.toList()));
     }
 
     @Override
     public List<CombatModifierDto> testGetListNativeQuery(String query) {
         return runInTransaction(() -> repository.getResultListOfNativeQuery(query)
-                         .stream().map(e -> translate(e)).collect(Collectors.toList()));     
+                         .stream().map(e -> translate(e,0)).collect(Collectors.toList()));     
     }
 
     @Override
     public CombatModifierDto testGetSingleNativeQuery(String query) {
-        return runInTransaction(() -> translate(repository.getSingleResultOfNativeQuery(query))); 
+        return runInTransaction(() -> translate(repository.getSingleResultOfNativeQuery(query),0)); 
     }
 }

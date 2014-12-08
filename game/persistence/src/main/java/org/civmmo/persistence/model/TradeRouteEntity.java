@@ -2,6 +2,7 @@ package org.civmmo.persistence.model;
 
 import org.civmmo.model.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -21,11 +22,11 @@ public class TradeRouteEntity extends TradeRoute implements Serializable {
 	private long id;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	private City from;
+	private CityEntity from;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private City to;
+	private CityEntity to;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Tile> tiles;
+	private List<TileEntity> tiles;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -43,18 +44,18 @@ public class TradeRouteEntity extends TradeRoute implements Serializable {
 		return from;
 	}
 	public void setFrom(City from) {
-		this.from = from;
+		this.from = (CityEntity)from;
 	}
 	public City getTo() {
 		return to;
 	}
 	public void setTo(City to) {
-		this.to = to;
+		this.to = (CityEntity)to;
 	}
 	public List<Tile> getTiles() {
-		return tiles;
+		return new ArrayList<>(tiles);
 	}
 	public void setTiles(List<Tile> tiles) {
-		this.tiles = tiles;
+		this.tiles = (List<TileEntity>)(List<?>)tiles;
 	}
 }

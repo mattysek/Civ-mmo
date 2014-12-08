@@ -3,6 +3,7 @@ package org.civmmo.persistence.model;
 import org.civmmo.model.*;
 import java.io.Serializable;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -24,11 +25,11 @@ public class PromotionEntity extends Promotion implements Serializable {
 	private String name;
 	
 	@OneToMany(mappedBy="affectedPromotion", cascade = CascadeType.ALL)
-	private List<UnitType> affectedBy;
+	private List<UnitTypeEntity> affectedBy;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Unit> units;
+	private List<UnitEntity> units;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Technology> prerequisities;
+	private List<TechnologyEntity> prerequisities;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -50,21 +51,21 @@ public class PromotionEntity extends Promotion implements Serializable {
 		this.name = name;
 	}
 	public List<UnitType> getAffectedBy() {
-		return affectedBy;
+		return new ArrayList<>(affectedBy);
 	}
 	public void setAffectedBy(List<UnitType> affectedBy) {
-		this.affectedBy = affectedBy;
+		this.affectedBy = (List<UnitTypeEntity>)(List<?>)affectedBy;
 	}
 	public List<Unit> getUnits() {
-		return units;
+		return new ArrayList<>(units);
 	}
 	public void setUnits(List<Unit> units) {
-		this.units = units;
+		this.units = (List<UnitEntity>)(List<?>)units;
 	}
 	public List<Technology> getPrerequisities() {
-		return prerequisities;
+		return new ArrayList<>(prerequisities);
 	}
 	public void setPrerequisities(List<Technology> prerequisities) {
-		this.prerequisities = prerequisities;
+		this.prerequisities = (List<TechnologyEntity>)(List<?>)prerequisities;
 	}
 }

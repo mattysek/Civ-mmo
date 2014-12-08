@@ -3,6 +3,7 @@ package org.civmmo.persistence.model;
 import org.civmmo.model.*;
 import java.io.Serializable;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -24,7 +25,7 @@ public class ImprovementEntity extends Improvement implements Serializable {
 	private String name;
 	
 	@OneToMany(mappedBy="improvement", cascade = CascadeType.ALL)
-	private List<Tile> ofTiles;
+	private List<TileEntity> ofTiles;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -46,10 +47,10 @@ public class ImprovementEntity extends Improvement implements Serializable {
 		this.name = name;
 	}
 	public List<Tile> getOfTiles() {
-		return ofTiles;
+		return new ArrayList<>(ofTiles);
 	}
 	public void setOfTiles(List<Tile> ofTiles) {
-		this.ofTiles = ofTiles;
+		this.ofTiles = (List<TileEntity>)(List<?>)ofTiles;
 	}
 	
 }

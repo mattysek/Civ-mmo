@@ -28,23 +28,23 @@ public class CivilizationEntity extends Civilization implements Serializable {
 	private long science;
 	private double happiness;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private SocialPolicy currentPolicy;
+	private SocialPolicyEntity currentPolicy;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Technology currentlyStudiedTechnology;
+	private TechnologyEntity currentlyStudiedTechnology;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Civilization> enemies;
+	private List<CivilizationEntity> enemies;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Civilization> allies;
+	private List<CivilizationEntity> allies;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<SocialPolicy> availableSocialPolicies;
+	private List<SocialPolicyEntity> availableSocialPolicies;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Policy> unlockedPolicies;
+	private List<PolicyEntity> unlockedPolicies;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Technology> knownTechnologies;
+	private List<TechnologyEntity> knownTechnologies;
 	@OneToMany(mappedBy="ownedBy", cascade = CascadeType.ALL)
-	private List<City> cities;
+	private List<CityEntity> cities;
 	@OneToMany(mappedBy="ownedBy", cascade = CascadeType.ALL)
-	private List<Unit> units;
+	private List<UnitEntity> units;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -96,55 +96,55 @@ public class CivilizationEntity extends Civilization implements Serializable {
 		return currentPolicy;
 	}
 	public void setCurrentPolicy(SocialPolicy currentPolicy) {
-		this.currentPolicy = currentPolicy;
+		this.currentPolicy = (SocialPolicyEntity)currentPolicy;
 	}
 	public Technology getCurrentlyStudiedTechnology() {
 		return currentlyStudiedTechnology;
 	}
 	public void setCurrentlyStudiedTechnology(Technology currentlyStudiedTechnology) {
-		this.currentlyStudiedTechnology = currentlyStudiedTechnology;
+		this.currentlyStudiedTechnology = (TechnologyEntity)currentlyStudiedTechnology;
 	}
 	public List<Civilization> getEnemies() {
-		return enemies;
+		return new ArrayList<>(enemies);
 	}
 	public void setEnemies(List<Civilization> enemies) {
-		this.enemies = enemies;
+		this.enemies = (List<CivilizationEntity>)(List<?>)enemies;
 	}
 	public List<Civilization> getAllies() {
-		return allies;
+		return new ArrayList<>(allies);
 	}
 	public void setAllies(List<Civilization> allies) {
-		this.allies = allies;
+		this.allies = (List<CivilizationEntity>)(List<?>)allies;
 	}
 	public List<SocialPolicy> getAvailableSocialPolicies() {
-		return availableSocialPolicies;
+		return new ArrayList<>(availableSocialPolicies);
 	}
 	public void setAvailableSocialPolicies(
 			List<SocialPolicy> availableSocialPolicies) {
-		this.availableSocialPolicies = availableSocialPolicies;
+		this.availableSocialPolicies = (List<SocialPolicyEntity>)(List<?>)availableSocialPolicies;
 	}
 	public List<Policy> getUnlockedPolicies() {
-		return unlockedPolicies;
+		return new ArrayList<>(unlockedPolicies);
 	}
 	public void setUnlockedPolicies(List<Policy> unlockedPolicies) {
-		this.unlockedPolicies = unlockedPolicies;
+		this.unlockedPolicies = (List<PolicyEntity>)(List<?>)unlockedPolicies;
 	}
 	public List<Technology> getKnownTechnologies() {
-		return knownTechnologies;
+		return new ArrayList<>(knownTechnologies);
 	}
 	public void setKnownTechnologies(List<Technology> knownTechnologies) {
-		this.knownTechnologies = knownTechnologies;
+		this.knownTechnologies = (List<TechnologyEntity>)(List<?>)knownTechnologies;
 	}
 	public List<City> getCities() {
-		return cities;
+		return new ArrayList<>(cities);
 	}
 	public void setCities(List<City> cities) {
-		this.cities = cities;
+		this.cities = (List<CityEntity>)(List<?>)cities;
 	}
 	public List<Unit> getUnits() {
-		return units;
+		return new ArrayList<>(units);
 	}
 	public void setUnits(List<Unit> units) {
-		this.units = units;
+		this.units = (List<UnitEntity>)(List<?>)units;
 	}
 }

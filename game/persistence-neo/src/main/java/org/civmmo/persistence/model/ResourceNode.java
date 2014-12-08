@@ -86,12 +86,12 @@ public class ResourceNode extends Resource {
 
     @Override
     public int getProduction() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return NodeHelper.getProperty(node,"production");
     }
 
     @Override
     public void setProduction(int production) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        NodeHelper.setProperty(node,"production",production);
     }
 
     @Override

@@ -26,14 +26,14 @@ public class RegionEntity extends Region implements Serializable {
     private long id;
 
     @OneToMany(mappedBy="region", cascade = CascadeType.ALL)
-    private List<Tile> tiles;
+    private List<TileEntity> tiles;
 
     public List<Tile> getTiles() {
-        return tiles;
+        return new ArrayList<>(tiles);
     }
 
     public void setTiles(List<Tile> tiles) {
-        this.tiles = tiles;
+        this.tiles = (List<TileEntity>)(List<?>)tiles;
     }
     
     private static final long serialVersionUID = 1L;

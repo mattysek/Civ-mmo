@@ -21,7 +21,7 @@ public class CombatModifierEntity extends CombatModifier implements Serializable
 	private double value;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Action afectedAction;
+	private ActionEntity afectedAction;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -46,6 +46,6 @@ public class CombatModifierEntity extends CombatModifier implements Serializable
 		return afectedAction;
 	}
 	public void setAfectedAction(Action afectedAction) {
-		this.afectedAction = afectedAction;
+		this.afectedAction = (ActionEntity)afectedAction;
 	}
 }

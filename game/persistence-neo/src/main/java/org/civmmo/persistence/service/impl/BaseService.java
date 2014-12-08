@@ -6,7 +6,6 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import javax.ejb.EJB;
 import org.civmmo.contracts.model.*;
 import org.civmmo.model.*;
 import org.civmmo.persistence.model.*;
@@ -17,6 +16,9 @@ public abstract class BaseService {
     
     //@EJB
     //protected GraphDatabaseServiceBean graphDb;
+    
+    protected static final int MAX_LEVEL = 2;
+    protected static final int START_LEVEL = 0;
             
     protected void runInTransaction(Runnable runnable)
     {
@@ -94,7 +96,7 @@ public abstract class BaseService {
         return result;
     }
 
-    protected ActionDto translate(Action object) {
+    protected ActionDto translate(Action object, int level) {
         if (object == null) {
             return null;
         }
@@ -104,14 +106,17 @@ public abstract class BaseService {
         result.setId(object.getId());
         result.setName(object.getName());
 
-        set(result::setCombatModifiers,
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level};
+            set(result::setCombatModifiers,
                 object::getCombatModifiers,
-                e -> translate(e));
+                e -> translate(e,help[0]));
         
-        set(result::setAplicableTo,
-                object::getAplicableTo,
-                e -> translate(e));
-
+            set(result::setAplicableTo,
+                    object::getAplicableTo,
+                    e -> translate(e,help[1]));
+        }
         return result;
     }
 
@@ -129,7 +134,7 @@ public abstract class BaseService {
         return result;
     }
 
-    protected CombatModifierDto translate(CombatModifier object) {
+    protected CombatModifierDto translate(CombatModifier object, int level) {
         if (object == null) {
             return null;
         }
@@ -138,8 +143,13 @@ public abstract class BaseService {
 
         result.setId(object.getId());
         result.setValue(object.getValue());
-        result.setAfectedAction(translate(object.getAfectedAction()));
-
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level};
+            result.setAfectedAction(translate(object.getAfectedAction(),help[0]));
+        }
+        
         return result;
     }
 
@@ -172,7 +182,7 @@ public abstract class BaseService {
         return result;
     }
 
-    protected BuildingDto translate(Building object) {
+    protected BuildingDto translate(Building object, int level) {
         if (object == null) {
             return null;
         }
@@ -185,19 +195,22 @@ public abstract class BaseService {
         result.setMaintenence(object.getMaintenence());
         result.setSpecialistsSlots(object.getSpecialistsSlots());
 
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level,level,level};
         set(result::setCurrentlyConstructedBy,
                 object::getCurrentlyConstructedBy,
-                e -> translate(e));
+                e -> translate(e,help[0]));
         set(result::setRequiredResources,
                 object::getRequiredResources,
-                e -> translate(e));
+                e -> translate(e,help[1]));
         set(result::setRequiredTechnologies,
                 object::getRequiredTechnologies,
-                e -> translate(e));
+                e -> translate(e,help[2]));
         set(result::setWorkedBy,
                 object::getWorkedBy,
-                e -> translate(e));
-
+                e -> translate(e,help[3]));
+        }
         return result;
     }
 
@@ -246,48 +259,52 @@ public abstract class BaseService {
         return result;
     }
 
-    protected CityDto translate(City object) {
+    protected CityDto translate(City object, int level) {
         if (object == null) {
             return null;
         }
 
         CityDto result = new CityDto();
-        result.setCenter(translate(object.getCenter()));
         result.setCitizens(object.getCitizens());
-        set(result::setConstructedBuildings,
-                object::getConstructedBuildings,
-                e -> translate(e));
-        set(result::setControledTiles,
-                object::getControledTiles,
-                e -> translate(e));
         result.setCulture(object.getCulture());
-        result.setCurrentlyConstructedBuilding(translate(object.getCurrentlyConstructedBuilding()));
-        result.setCurrentlyConstructedUnit(translate(object.getCurrentlyConstructedUnit()));
         result.setFood(object.getFood());
         result.setGold(object.getGold());
         result.setHitPoints(object.getHitPoints());
         result.setId(object.getId());
         result.setName(object.getName());
-        result.setOwnedBy(translate(object.getOwnedBy()));
         result.setProduction(object.getProduction());
         result.setRange(object.getRange());
         result.setScience(object.getScience());
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level,level,level,level,level,level,level,level,level,level};
+        set(result::setConstructedBuildings,
+                object::getConstructedBuildings,
+                e -> translate(e,help[0]));
+        set(result::setControledTiles,
+                object::getControledTiles,
+                e -> translate(e,help[1]));
+        result.setCurrentlyConstructedBuilding(translate(object.getCurrentlyConstructedBuilding(),help[2]));
+        result.setCurrentlyConstructedUnit(translate(object.getCurrentlyConstructedUnit(),help[3]));
+        result.setOwnedBy(translate(object.getOwnedBy(),help[4]));
         set(result::setTradeRoutesFrom,
                 object::getTradeRoutesFrom,
-                e -> translate(e));
+                e -> translate(e,help[5]));
         set(result::setTradeRoutesTo,
                 object::getTradeRoutesTo,
-                e -> translate(e));
+                e -> translate(e,help[6]));
         set(result::setVisibleTiles,
                 object::getVisibleTiles,
-                e -> translate(e));
+                e -> translate(e,help[7]));
         set(result::setWorkedBuildings,
                 object::getWorkedBuildings,
-                e -> translate(e));
+                e -> translate(e,help[8]));
         set(result::setWorkedTiles,
                 object::getWorkedTiles,
-                e -> translate(e));
-
+                e -> translate(e,help[9]));
+        result.setCenter(translate(object.getCenter(),help[10]));
+        }
         return result;
     }
 
@@ -331,43 +348,47 @@ public abstract class BaseService {
         return result;
     }
 
-    protected CivilizationDto translate(Civilization object) {
+    protected CivilizationDto translate(Civilization object, int level) {
         if (object == null) {
             return null;
         }
 
         CivilizationDto result = new CivilizationDto();
 
-        set(result::setAllies,
-                object::getAllies,
-                e -> translate(e));
-        set(result::setAvailableSocialPolicies,
-                object::getAvailableSocialPolicies,
-                e -> translate(e));
-        set(result::setCities,
-                object::getCities,
-                e -> translate(e));
         result.setCulture(object.getCulture());
-        result.setCurrentPolicy(translate(object.getCurrentPolicy()));
-        result.setCurrentlyStudiedTechnology(translate(object.getCurrentlyStudiedTechnology()));
-        set(result::setEnemies,
-                object::getEnemies,
-                e -> translate(e));
         result.setGold(object.getGold());
         result.setHappiness(object.getHappiness());
         result.setId(object.getId());
-        set(result::setKnownTechnologies,
-                object::getKnownTechnologies,
-                e -> translate(e));
         result.setName(object.getName());
         result.setScience(object.getScience());
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level,level,level,level,level,level,level,level};
+        set(result::setAllies,
+                object::getAllies,
+                e -> translate(e,help[0]));
+        set(result::setAvailableSocialPolicies,
+                object::getAvailableSocialPolicies,
+                e -> translate(e,help[1]));
+        set(result::setCities,
+                object::getCities,
+                e -> translate(e,help[2]));
+        result.setCurrentPolicy(translate(object.getCurrentPolicy(),help[3]));
+        result.setCurrentlyStudiedTechnology(translate(object.getCurrentlyStudiedTechnology(),help[4]));
+        set(result::setEnemies,
+                object::getEnemies,
+                e -> translate(e,help[5]));
+        set(result::setKnownTechnologies,
+                object::getKnownTechnologies,
+                e -> translate(e,help[6]));
         set(result::setUnits,
                 object::getUnits,
-                e -> translate(e));
+                e -> translate(e,help[7]));
         set(result::setUnlockedPolicies,
                 object::getUnlockedPolicies,
-                e -> translate(e));
-
+                e -> translate(e,help[8]));
+        }
         return result;
     }
 
@@ -387,7 +408,7 @@ public abstract class BaseService {
         return result;
     }
 
-    protected ImprovementDto translate(Improvement object) {
+    protected ImprovementDto translate(Improvement object, int level) {
         if (object == null) {
             return null;
         }
@@ -396,10 +417,14 @@ public abstract class BaseService {
 
         result.setId(object.getId());
         result.setName(object.getName());
-        set(result::setOfTiles,
-                object::getOfTiles,
-                e -> translate(e));
-
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level};
+            set(result::setOfTiles,
+                    object::getOfTiles,
+                    e -> translate(e,help[0]));
+        }
         return result;
     }
 
@@ -418,7 +443,7 @@ public abstract class BaseService {
         return result;
     }
 
-    protected PolicyDto translate(Policy object) {
+    protected PolicyDto translate(Policy object, int level) {
         if (object == null) {
             return null;
         }
@@ -428,7 +453,12 @@ public abstract class BaseService {
         result.setCost(object.getCost());
         result.setId(object.getId());
         result.setName(object.getName());
-        result.setSocialPolicy(translate(object.getSocialPolicy()));
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level};
+            result.setSocialPolicy(translate(object.getSocialPolicy(),help[0]));
+        }
 
         return result;
     }
@@ -455,25 +485,29 @@ public abstract class BaseService {
         return result;
     }
 
-    protected PromotionDto translate(Promotion object) {
+    protected PromotionDto translate(Promotion object,int level) {
         if (object == null) {
             return null;
         }
 
         PromotionDto result = new PromotionDto();
 
-        set(result::setAffectedBy,
-                object::getAffectedBy,
-                e -> translate(e));
         result.setId(object.getId());
         result.setName(object.getName());
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level,level};
+        set(result::setAffectedBy,
+                object::getAffectedBy,
+                e -> translate(e,help[0]));
         set(result::setPrerequisities,
                 object::getPrerequisities,
-                e -> translate(e));
+                e -> translate(e,help[1]));
         set(result::setUnits,
                 object::getUnits,
-                e -> translate(e));
-
+                e -> translate(e,help[2]));
+        }
         return result;
     }
 
@@ -492,7 +526,7 @@ public abstract class BaseService {
         return result;
     }
 
-    protected RegionDto translate(Region object) {
+    protected RegionDto translate(Region object, int level) {
         if (object == null) {
             return null;
         }
@@ -500,9 +534,14 @@ public abstract class BaseService {
         RegionDto result = new RegionDto();
 
         result.setId(object.getId());
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level};
         set(result::setTiles,
                 object::getTiles,
-                e -> translate(e));
+                e -> translate(e,help[0]));
+        }
 
         return result;
     }
@@ -535,30 +574,35 @@ public abstract class BaseService {
         return result;
     }
 
-    protected ResourceDto translate(Resource object) {
+    protected ResourceDto translate(Resource object, int level) {
         if (object == null) {
             return null;
         }
 
         ResourceDto result = new ResourceDto();
 
-        set(result::setCanBeFoundOnTiles,
-                object::getCanBeFoundOnTiles,
-                e -> translate(e));
         result.setFood(object.getFood());
         result.setGold(object.getGold());
         result.setHappiness(object.getHappiness());
         result.setId(object.getId());
-        result.setImprovement(translate(object.getImprovement()));
         result.setName(object.getName());
         result.setProduction(object.getProduction());
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level,level,level,level};
+        set(result::setCanBeFoundOnTiles,
+                object::getCanBeFoundOnTiles,
+                e -> translate(e,help[0]));
+        result.setImprovement(translate(object.getImprovement(),help[1]));
         set(result::setRequiredByBuildings,
                 object::getRequiredByBuildings,
-                e -> translate(e));
+                e -> translate(e,help[2]));
         set(result::setRequiredByUnits,
                 object::getRequiredByUnits,
-                e -> translate(e));
-        result.setRevealedBy(translate(object.getRevealedBy()));
+                e -> translate(e,help[3]));
+        result.setRevealedBy(translate(object.getRevealedBy(),help[4]));
+        }
 
         return result;
     }
@@ -578,7 +622,7 @@ public abstract class BaseService {
         return result;
     }
 
-    protected RiverDto translate(River object) {
+    protected RiverDto translate(River object, int level) {
         if (object == null) {
             return null;
         }
@@ -586,9 +630,13 @@ public abstract class BaseService {
         RiverDto result = new RiverDto();
 
         result.setId(object.getId());
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level};
         set(result::setTiles,
                 object::getTiles,
-                e -> translate(e));
+                e -> translate(e,help[0]));
+        }
 
         return result;
     }
@@ -613,7 +661,7 @@ public abstract class BaseService {
         return result;
     }
 
-    protected SocialPolicyDto translate(SocialPolicy object) {
+    protected SocialPolicyDto translate(SocialPolicy object, int level) {
         if (object == null) {
             return null;
         }
@@ -623,12 +671,16 @@ public abstract class BaseService {
         result.setId(object.getId());
         result.setBaseCost(object.getBaseCost());
         result.setName(object.getName());
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level};
         set(result::setCurrentlyUsedBy,
                 object::getCurrentlyUsedBy,
-                e -> translate(e));
+                e -> translate(e,help[0]));
         set(result::setPolicies,
                 object::getPolicies,
-                e -> translate(e));
+                e -> translate(e,help[1]));
+        }
 
         return result;
     }
@@ -662,7 +714,7 @@ public abstract class BaseService {
         return result;
     }
 
-    protected TechnologyDto translate(Technology object) {
+    protected TechnologyDto translate(Technology object,int level) {
         if (object == null) {
             return null;
         }
@@ -671,23 +723,28 @@ public abstract class BaseService {
 
         result.setCost(object.getCost());
         result.setId(object.getId());
+        result.setName(object.getName());
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level,level,level,level};
         set(result::setKnownBy,
                 object::getKnownBy,
-                e -> translate(e));
-        result.setName(object.getName());
+                e -> translate(e,help[0]));
+        
         set(result::setPrerequisities,
                 object::getPrerequisities,
-                e -> translate(e));
+                e -> translate(e,help[1]));
         set(result::setRevealsBuildings,
                 object::getRevealsBuildings,
-                e -> translate(e));
+                e -> translate(e,help[2]));
         set(result::setRevealsResources,
                 object::getRevealsResources,
-                e -> translate(e));
+                e -> translate(e,help[3]));
         set(result::setRevealsUnits,
                 object::getRevealsUnits,
-                e -> translate(e));
-
+                e -> translate(e,help[4]));
+        }
         return result;
     }
 
@@ -712,24 +769,28 @@ public abstract class BaseService {
         return result;
     }
 
-    protected TerrainFeatureDto translate(TerrainFeature object) {
+    protected TerrainFeatureDto translate(TerrainFeature object, int level) {
         if (object == null) {
             return null;
         }
 
         TerrainFeatureDto result = new TerrainFeatureDto();
 
-        result.setCombatModifier(translate(object.getCombatModifier()));
         result.setFood(object.getFood());
         result.setGold(object.getGold());
         result.setId(object.getId());
         result.setMovementCost(object.getMovementCost());
         result.setName(object.getName());
         result.setProduction(object.getProduction());
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level};
+        result.setCombatModifier(translate(object.getCombatModifier(),help[0]));
         set(result::setOfTiles,
                 object::getOfTiles,
-                e -> translate(e));
-
+                e -> translate(e,help[1]));
+        }
         return result;
     }
 
@@ -754,23 +815,28 @@ public abstract class BaseService {
         return result;
     }
 
-    protected TerrainTypeDto translate(TerrainType object) {
+    protected TerrainTypeDto translate(TerrainType object, int level) {
         if (object == null) {
             return null;
         }
 
         TerrainTypeDto result = new TerrainTypeDto();
 
-        result.setCombatModifier(translate(object.getCombatModifier()));
         result.setFood(object.getFood());
         result.setGold(object.getGold());
         result.setId(object.getId());
         result.setMovementCost(object.getMovementCost());
         result.setName(object.getName());
+        result.setProduction(object.getProduction());
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level};
+        result.setCombatModifier(translate(object.getCombatModifier(),help[0]));
         set(result::setOfTiles,
                 object::getOfTiles,
-                e -> translate(e));
-        result.setProduction(object.getProduction());
+                e -> translate(e,help[1]));
+        }
 
         return result;
     }
@@ -818,45 +884,50 @@ public abstract class BaseService {
         return result;
     }
 
-    protected TileDto translate(Tile object) {
+    protected TileDto translate(Tile object, int level) {
         if (object == null) {
             return null;
         }
 
         TileDto result = new TileDto();
 
-        result.setCity(translate(object.getCity()));
-        result.setCivilUnit(translate(object.getCivilUnit()));
-        set(result::setControledByCity,
-                object::getControledByCity,
-                e -> translate(e));
-        set(result::setControledByUnit,
-                object::getControledByUnit,
-                e -> translate(e));
         result.setId(object.getId());
-        result.setImprovement(translate(object.getImprovement()));
-        result.setMilitaryUnit(translate(object.getMilitaryUnit()));
-        result.setRegion(translate(object.getRegion()));
-        result.setResource(translate(object.getResource()));
-        set(result::setRivers,
-                object::getRivers,
-                e -> translate(e));
-        result.setTerrainFeature(translate(object.getTerrainFeature()));
-        result.setTerrainType(translate(object.getTerrainType()));
-        set(result::setTradeRoutes,
-                object::getTradeRoutes,
-                e -> translate(e));
-        set(result::setVisibleForCities,
-                object::getVisibleForCities,
-                e -> translate(e));
-        set(result::setVisibleForUnits,
-                object::getVisibleForUnits,
-                e -> translate(e));
-        set(result::setWorkedBy,
-                object::getWorkedBy,
-                e -> translate(e));
         result.setX(object.getX());
         result.setY(object.getY());
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level,level,level,level,level,level,level,level,level,level,level,level,level,level};
+        result.setCity(translate(object.getCity(),help[0]));
+        result.setCivilUnit(translate(object.getCivilUnit(),help[1]));
+        set(result::setControledByCity,
+                object::getControledByCity,
+                e -> translate(e,help[2]));
+        set(result::setControledByUnit,
+                object::getControledByUnit,
+                e -> translate(e,help[3]));
+        result.setImprovement(translate(object.getImprovement(),help[4]));
+        result.setMilitaryUnit(translate(object.getMilitaryUnit(),help[5]));
+        result.setRegion(translate(object.getRegion(),help[6]));
+        result.setResource(translate(object.getResource(),help[7]));
+        set(result::setRivers,
+                object::getRivers,
+                e -> translate(e,help[8]));
+        result.setTerrainFeature(translate(object.getTerrainFeature(),help[9]));
+        result.setTerrainType(translate(object.getTerrainType(),help[10]));
+        set(result::setTradeRoutes,
+                object::getTradeRoutes,
+                e -> translate(e,help[11]));
+        set(result::setVisibleForCities,
+                object::getVisibleForCities,
+                e -> translate(e,help[12]));
+        set(result::setVisibleForUnits,
+                object::getVisibleForUnits,
+                e -> translate(e,help[13]));
+        set(result::setWorkedBy,
+                object::getWorkedBy,
+                e -> translate(e,help[14]));
+        }
 
         return result;
     }
@@ -878,20 +949,27 @@ public abstract class BaseService {
         return result;
     }
 
-    protected TradeRouteDto translate(TradeRoute object) {
+    protected TradeRouteDto translate(TradeRoute object, int level) {
         if (object == null) {
             return null;
         }
 
         TradeRouteDto result = new TradeRouteDto();
 
-        result.setFrom(translate(object.getFrom()));
         result.setId(object.getId());
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level,level};
+        
+        result.setFrom(translate(object.getFrom(),help[0]));
+        
         set(result::setTiles,
                 object::getTiles,
-                e -> translate(e));
-        result.setTo(translate(object.getTo()));
+                e -> translate(e,help[1]));
+        result.setTo(translate(object.getTo(),help[2]));
 
+        }
         return result;
     }
 
@@ -932,7 +1010,7 @@ public abstract class BaseService {
         return result;
     }
 
-    protected UnitDto translate(Unit object) {
+    protected UnitDto translate(Unit object, int level) {
         if (object == null) {
             return null;
         }
@@ -940,32 +1018,36 @@ public abstract class BaseService {
         UnitDto result = new UnitDto();
 
         result.setCombatStrength(object.getCombatStrength());
-        set(result::setControledTiles,
-                object::getControledTiles,
-                e -> translate(e));
         result.setCost(object.getCost());
-        set(result::setCurrentlyConstructedBy,
-                object::getCurrentlyConstructedBy,
-                e -> translate(e));
         result.setExperience(object.getExperience());
         result.setHitPoints(object.getHitPoints());
         result.setId(object.getId());
         result.setMovementPoints(object.getMovementPoints());
         result.setName(object.getName());
-        result.setOwnedBy(translate(object.getOwnedBy()));
-        result.setPosition(translate(object.getPosition()));
-        set(result::setPromotions,
-                object::getPromotions,
-                e -> translate(e));
         result.setRange(object.getRange());
         result.setRangedCombatStrength(object.getRangedCombatStrength());
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level,level,level,level,level,level};
+        set(result::setControledTiles,
+                object::getControledTiles,
+                e -> translate(e,help[0]));
+        set(result::setCurrentlyConstructedBy,
+                object::getCurrentlyConstructedBy,
+                e -> translate(e,help[1]));
+        result.setOwnedBy(translate(object.getOwnedBy(),help[2]));
+        result.setPosition(translate(object.getPosition(),help[3]));
+        set(result::setPromotions,
+                object::getPromotions,
+                e -> translate(e,help[4]));
         set(result::setTypes,
                 object::getTypes,
-                e -> translate(e));
+                e -> translate(e,help[5]));
         set(result::setVisibleTiles,
                 object::getVisibleTiles,
-                e -> translate(e));
-
+                e -> translate(e,help[6]));
+        }
         return result;
     }
 
@@ -989,23 +1071,27 @@ public abstract class BaseService {
         return result;
     }
 
-    protected UnitTypeDto translate(UnitType object) {
+    protected UnitTypeDto translate(UnitType object, int level) {
         if (object == null) {
             return null;
         }
 
         UnitTypeDto result = new UnitTypeDto();
-
-        set(result::setActions,
-                object::getActions,
-                e -> translate(e));
-        result.setAffectedPromotion(translate(object.getAffectedPromotion()));
+        
         result.setId(object.getId());
         result.setName(object.getName());
+        
+        if(level++ < MAX_LEVEL)
+        {
+            int[] help = new int[]{level,level,level};
+        set(result::setActions,
+                object::getActions,
+                e -> translate(e,help[0]));
+        result.setAffectedPromotion(translate(object.getAffectedPromotion(),help[1]));
         set(result::setUnits,
                 object::getUnits,
-                e -> translate(e));
-
+                e -> translate(e,help[2]));
+        }
         return result;
     }
 }

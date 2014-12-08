@@ -3,6 +3,7 @@ package org.civmmo.persistence.model;
 import org.civmmo.model.*;
 import java.io.Serializable;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -23,12 +24,12 @@ public class UnitTypeEntity extends UnitType implements Serializable {
 	@Column(nullable=false)
 	private String name;
 	
-        @ManyToMany(cascade = CascadeType.ALL)
-	private List<Action> actions;
+    @ManyToMany(cascade = CascadeType.ALL)
+	private List<ActionEntity> actions;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Unit> units;
+	private List<UnitEntity> units;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Promotion affectedPromotion;
+	private PromotionEntity affectedPromotion;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -50,21 +51,21 @@ public class UnitTypeEntity extends UnitType implements Serializable {
 		this.name = name;
 	}
 	public List<Unit> getUnits() {
-		return units;
+		return new ArrayList<>(units);
 	}
 	public void setUnits(List<Unit> units) {
-		this.units = units;
+		this.units = (List<UnitEntity>)(List<?>)units;
 	}
 	public Promotion getAffectedPromotion() {
 		return affectedPromotion;
 	}
 	public void setAffectedPromotion(Promotion affectedPromotion) {
-		this.affectedPromotion = affectedPromotion;
+		this.affectedPromotion = (PromotionEntity)affectedPromotion;
 	}
         public List<Action> getActions() {
-		return actions;
+		return new ArrayList<>(actions);
 	}
 	public void setActions(List<Action> actions) {
-		this.actions = actions;
+		this.actions = (List<ActionEntity>)(List<?>)actions;
 	}
 }

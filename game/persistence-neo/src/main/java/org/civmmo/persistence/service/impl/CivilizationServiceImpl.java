@@ -41,23 +41,23 @@ public class CivilizationServiceImpl extends BaseService implements Civilization
 
     @Override
     public CivilizationDto getById(Long id) {
-        return runInTransaction(() -> translate(repository.getById(id)));
+        return runInTransaction(() -> translate(repository.getById(id),START_LEVEL));
     }
     
     @Override
     public List<CivilizationDto> getAll() {
-        return runInTransaction(() -> repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList()));
+        return runInTransaction(() -> repository.getAll().stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList()));
     }
 
     @Override
     public List<CivilizationDto> testGetListNativeQuery(String query) {
         return runInTransaction(() -> repository.getResultListOfNativeQuery(query)
-                         .stream().map(e -> translate(e)).collect(Collectors.toList()));     
+                         .stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList()));     
     }
 
     @Override
     public CivilizationDto testGetSingleNativeQuery(String query) {
-        return runInTransaction(() -> translate(repository.getSingleResultOfNativeQuery(query))); 
+        return runInTransaction(() -> translate(repository.getSingleResultOfNativeQuery(query),START_LEVEL)); 
     }
 
     @Override
@@ -131,7 +131,7 @@ public class CivilizationServiceImpl extends BaseService implements Civilization
         return runInTransaction(() -> {
             Civilization civilization = repository.getById(civilizationId);
             return civilization.getVisibleResources().stream()
-                               .map(r -> translate(r))
+                               .map(r -> translate(r,START_LEVEL))
                                .collect(Collectors.toList());
         });
     }
@@ -141,7 +141,7 @@ public class CivilizationServiceImpl extends BaseService implements Civilization
         return runInTransaction(() -> {
             Civilization civilization = repository.getById(civilizationId);
             return civilization.getVisibleTilesFromRegion(translate(region,TranslateOption.GetById)).stream()
-                               .map(r -> translate(r))
+                               .map(r -> translate(r,START_LEVEL))
                                .collect(Collectors.toList());
         });
     }

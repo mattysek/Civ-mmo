@@ -30,29 +30,29 @@ public class CityEntity extends City implements Serializable {
 	private int hitPoints;
 	private int citizens;
         
-        @OneToOne(cascade = CascadeType.ALL)
-	private Tile center;
+    @OneToOne(cascade = CascadeType.ALL)
+	private TileEntity center;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Civilization ownedBy;
+	private CivilizationEntity ownedBy;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Building currentlyConstructedBuilding;
+	private BuildingEntity currentlyConstructedBuilding;
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Building> constructedBuildings;
+	private List<BuildingEntity> constructedBuildings;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Building> workedBuildings;
+	private List<BuildingEntity> workedBuildings;
 	@OneToMany(mappedBy="from",cascade = CascadeType.ALL)
-	private List<TradeRoute> tradeRoutesFrom;
+	private List<TradeRouteEntity> tradeRoutesFrom;
 	@OneToMany(mappedBy="to",cascade = CascadeType.ALL)
-	private List<TradeRoute> tradeRoutesTo;
+	private List<TradeRouteEntity> tradeRoutesTo;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Tile> visibleTiles;
+	private List<TileEntity> visibleTiles;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Tile> controledTiles;
+	private List<TileEntity> controledTiles;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Tile> workedTiles;
+	private List<TileEntity> workedTiles;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Unit currentlyConstructedUnit;
+	private UnitEntity currentlyConstructedUnit;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -133,68 +133,68 @@ public class CityEntity extends City implements Serializable {
 		return center;
 	}
 	public void setCenter(Tile center) {
-		this.center = center;
+		this.center = (TileEntity)center;
 	}
 	public Civilization getOwnedBy() {
 		return ownedBy;
 	}
 	public void setOwnedBy(Civilization ownedBy) {
-		this.ownedBy = ownedBy;
+		this.ownedBy = (CivilizationEntity)ownedBy;
 	}
 	public Building getCurrentlyConstructedBuilding() {
 		return currentlyConstructedBuilding;
 	}
 	public void setCurrentlyConstructedBuilding(
 			Building currentlyConstructedBuilding) {
-		this.currentlyConstructedBuilding = currentlyConstructedBuilding;
+		this.currentlyConstructedBuilding = (BuildingEntity)currentlyConstructedBuilding;
 	}
 	public List<Building> getConstructedBuildings() {
-		return constructedBuildings;
+		return new ArrayList<>(constructedBuildings);
 	}
 	public void setConstructedBuildings(List<Building> constructedBuildings) {
-		this.constructedBuildings = constructedBuildings;
+		this.constructedBuildings = (List<BuildingEntity>)(List<?>)constructedBuildings;
 	}
 	public List<Building> getWorkedBuildings() {
-		return workedBuildings;
+		return new ArrayList<>(workedBuildings);
 	}
 	public void setWorkedBuildings(List<Building> workedBuildings) {
-		this.workedBuildings = workedBuildings;
+		this.workedBuildings = (List<BuildingEntity>)(List<?>)workedBuildings;
 	}
 	public List<TradeRoute> getTradeRoutesFrom() {
-		return tradeRoutesFrom;
+		return new ArrayList<>(tradeRoutesFrom);
 	}
 	public void setTradeRoutesFrom(List<TradeRoute> tradeRoutesFrom) {
-		this.tradeRoutesFrom = tradeRoutesFrom;
+		this.tradeRoutesFrom = (List<TradeRouteEntity>)(List<?>)tradeRoutesFrom;
 	}
 	public List<TradeRoute> getTradeRoutesTo() {
-		return tradeRoutesTo;
+		return new ArrayList<>(tradeRoutesTo);
 	}
 	public void setTradeRoutesTo(List<TradeRoute> tradeRoutesTo) {
-		this.tradeRoutesTo = tradeRoutesTo;
+		this.tradeRoutesTo = (List<TradeRouteEntity>)(List<?>)tradeRoutesTo;
 	}
 	public List<Tile> getVisibleTiles() {
-		return visibleTiles;
+		return new ArrayList<>(visibleTiles);
 	}
 	public void setVisibleTiles(List<Tile> visibleTiles) {
-		this.visibleTiles = visibleTiles;
+		this.visibleTiles = (List<TileEntity>)(List<?>)visibleTiles;
 	}
 	public List<Tile> getControledTiles() {
-		return controledTiles;
+		return new ArrayList<>(controledTiles);
 	}
 	public void setControledTiles(List<Tile> controledTiles) {
-		this.controledTiles = controledTiles;
+		this.controledTiles = (List<TileEntity>)(List<?>)controledTiles;
 	}
 	public List<Tile> getWorkedTiles() {
-		return workedTiles;
+		return new ArrayList<>(workedTiles);
 	}
 	public void setWorkedTiles(List<Tile> workedTiles) {
-		this.workedTiles = workedTiles;
+		this.workedTiles = (List<TileEntity>)(List<?>)workedTiles;
 	}
 	public Unit getCurrentlyConstructedUnit() {
 		return currentlyConstructedUnit;
 	}
 	public void setCurrentlyConstructedUnit(Unit currentlyConstructedUnit) {
-		this.currentlyConstructedUnit = currentlyConstructedUnit;
+		this.currentlyConstructedUnit = (UnitEntity)currentlyConstructedUnit;
 	}
 	
    

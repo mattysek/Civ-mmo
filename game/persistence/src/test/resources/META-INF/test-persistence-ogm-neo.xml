@@ -45,7 +45,7 @@
         <class>org.civmmo.persistence.model.Building</class>
         <properties>
             <property name="hibernate.ogm.datastore.provider" value="neo4j_embedded" />
-            <property name="hibernate.ogm.neo4j.database_path" value="D:\_Prog\Neo4j\_DB"/>
+            <property name="hibernate.ogm.neo4j.database_path" value="D:\_Prog\Neo4j\_DB_test"/>
         </properties>
     </persistence-unit>
     

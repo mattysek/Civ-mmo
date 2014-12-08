@@ -2,6 +2,7 @@ package org.civmmo.persistence.model;
 
 import org.civmmo.model.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -22,37 +23,37 @@ public class TileEntity extends Tile implements Serializable {
 	private long x;
 	private long y;
 	
-        @OneToOne(mappedBy="center", cascade = CascadeType.ALL)
-	private City city;
-        @OneToOne(mappedBy="position", cascade = CascadeType.ALL)
-	private Unit militaryUnit;
-        @OneToOne(mappedBy="position", cascade = CascadeType.ALL)
-	private Unit civilUnit;
+    @OneToOne(mappedBy="center", cascade = CascadeType.ALL)
+	private CityEntity city;
+    @OneToOne(mappedBy="position", cascade = CascadeType.ALL)
+	private UnitEntity militaryUnit;
+    @OneToOne(mappedBy="position", cascade = CascadeType.ALL)
+	private UnitEntity civilUnit;
 	
-        @ManyToOne(cascade = CascadeType.ALL)
-	private Region region;
+    @ManyToOne(cascade = CascadeType.ALL)
+	private RegionEntity region;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private TerrainFeature terrainFeature;
+	private TerrainFeatureEntity terrainFeature;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private TerrainType terrainType;
+	private TerrainTypeEntity terrainType;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Improvement improvement;
+	private ImprovementEntity improvement;
 	@ManyToOne(cascade = CascadeType.ALL)
-	private Resource resource;
+	private ResourceEntity resource;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<TradeRoute> tradeRoutes;
+	private List<TradeRouteEntity> tradeRoutes;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<River> rivers;
+	private List<RiverEntity> rivers;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<City> visibleForCities;
+	private List<CityEntity> visibleForCities;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Unit> visibleForUnits;
+	private List<UnitEntity> visibleForUnits;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<City> controledByCity;
+	private List<CityEntity> controledByCity;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Unit> controledByUnit;
+	private List<UnitEntity> controledByUnit;
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<City> workedBy;
+	private List<CityEntity> workedBy;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -85,91 +86,91 @@ public class TileEntity extends Tile implements Serializable {
         }
 
         public void setRegion(Region region) {
-            this.region = region;
+            this.region = (RegionEntity)region;
         }
 	public City getCity() {
 		return city;
 	}
 	public void setCity(City city) {
-		this.city = city;
+		this.city = (CityEntity)city;
 	}
 	public Unit getMilitaryUnit() {
 		return militaryUnit;
 	}
 	public void setMilitaryUnit(Unit militaryUnit) {
-		this.militaryUnit = militaryUnit;
+		this.militaryUnit = (UnitEntity)militaryUnit;
 	}
 	public Unit getCivilUnit() {
 		return civilUnit;
 	}
 	public void setCivilUnit(Unit civilUnit) {
-		this.civilUnit = civilUnit;
+		this.civilUnit = (UnitEntity)civilUnit;
 	}
 	public TerrainFeature getTerrainFeature() {
 		return terrainFeature;
 	}
 	public void setTerrainFeature(TerrainFeature terrainFeature) {
-		this.terrainFeature = terrainFeature;
+		this.terrainFeature = (TerrainFeatureEntity)terrainFeature;
 	}
 	public TerrainType getTerrainType() {
 		return terrainType;
 	}
 	public void setTerrainType(TerrainType terrainType) {
-		this.terrainType = terrainType;
+		this.terrainType = (TerrainTypeEntity)terrainType;
 	}
 	public Improvement getImprovement() {
 		return improvement;
 	}
 	public void setImprovement(Improvement improvement) {
-		this.improvement = improvement;
+		this.improvement = (ImprovementEntity)improvement;
 	}
 	public Resource getResource() {
 		return resource;
 	}
 	public void setResource(Resource resource) {
-		this.resource = resource;
+		this.resource = (ResourceEntity)resource;
 	}
 	public List<TradeRoute> getTradeRoutes() {
-		return tradeRoutes;
+		return new ArrayList<>(tradeRoutes);
 	}
 	public void setTradeRoutes(List<TradeRoute> tradeRoutes) {
-		this.tradeRoutes = tradeRoutes;
+		this.tradeRoutes = (List<TradeRouteEntity>)(List<?>)tradeRoutes;
 	}
 	public List<River> getRivers() {
-		return rivers;
+		return new ArrayList<>(rivers);
 	}
 	public void setRivers(List<River> rivers) {
-		this.rivers = rivers;
+		this.rivers = (List<RiverEntity>)(List<?>)rivers;
 	}
 	public List<City> getVisibleForCities() {
-		return visibleForCities;
+		return new ArrayList<>(visibleForCities);
 	}
 	public void setVisibleForCities(List<City> visibleForCities) {
-		this.visibleForCities = visibleForCities;
+		this.visibleForCities = (List<CityEntity>)(List<?>)visibleForCities;
 	}
 	public List<Unit> getVisibleForUnits() {
-		return visibleForUnits;
+		return new ArrayList<>(visibleForUnits);
 	}
 	public void setVisibleForUnits(List<Unit> visibleForUnits) {
-		this.visibleForUnits = visibleForUnits;
+		this.visibleForUnits = (List<UnitEntity>)(List<?>)visibleForUnits;
 	}
 	public List<City> getControledByCity() {
-		return controledByCity;
+		return new ArrayList<>(controledByCity);
 	}
 	public void setControledByCity(List<City> controledByCity) {
-		this.controledByCity = controledByCity;
+		this.controledByCity = (List<CityEntity>)(List<?>)controledByCity;
 	}
 	public List<Unit> getControledByUnit() {
-		return controledByUnit;
+		return new ArrayList<>(controledByUnit);
 	}
 	public void setControledByUnit(List<Unit> controledByUnit) {
-		this.controledByUnit = controledByUnit;
+		this.controledByUnit = (List<UnitEntity>)(List<?>)controledByUnit;
 	}
 	public List<City> getWorkedBy() {
-		return workedBy;
+		return new ArrayList<>(workedBy);
 	}
 	public void setWorkedBy(List<City> workedBy) {
-		this.workedBy = workedBy;
+		this.workedBy = (List<CityEntity>)(List<?>)workedBy;
 	}
 	
 }

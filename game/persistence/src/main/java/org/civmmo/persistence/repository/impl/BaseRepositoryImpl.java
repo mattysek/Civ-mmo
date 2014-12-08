@@ -23,28 +23,21 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
         em = entityManager;
     }
           
-    private Class<T> persistentClass = figureOutPersistentClass();
-    
-    @SuppressWarnings("unchecked")
-	private Class<T> figureOutPersistentClass() 
-    {
-        Class<T> result = (Class<T>)((ParameterizedType) (getClass().getGenericSuperclass())).getActualTypeArguments()[0];
-        return result;
-    }
+    protected abstract Class<? extends T> getPersistentClass();
     
     private void persistObject(T object)
     {
-        em.persist(object);
+        em.persist(getPersistentClass().cast(object));
     }
     
     private void removeObject(T object)
     {
-        em.remove(em.merge(object));
+        em.remove(em.merge(getPersistentClass().cast(object)));
     }
     
     private void mergeObject(T object)
     {
-        em.merge(object);
+        em.merge(getPersistentClass().cast(object));
     }
         
     protected void persist(T object)
@@ -79,7 +72,7 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
 
     public T getById(Long id) 
     {
-        T result = em.find(persistentClass, id);
+        T result = em.find(getPersistentClass(), id);
         return result;
     }
 
@@ -87,7 +80,7 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
     public List<T> getAll() 
     {
         Query q = em.createQuery("SELECT o FROM " +
-                persistentClass.getSimpleName() + " o");
+                getPersistentClass().getSimpleName() + " o");
         return (List<T>) q.getResultList();
     }
     
@@ -124,13 +117,13 @@ public abstract class BaseRepositoryImpl<T> implements BaseRepository<T>
     @Override
     public T getSingleResultOfNativeQuery(String query)
     {
-        return (T) em.createNativeQuery(query,persistentClass).getSingleResult();
+        return (T) em.createNativeQuery(query,getPersistentClass()).getSingleResult();
     }
         
     @Override
     public List<T> getResultListOfNativeQuery(String query)
     {
-        return (List<T>) em.createNativeQuery(query,persistentClass).getResultList();
+        return (List<T>) em.createNativeQuery(query,getPersistentClass()).getResultList();
     }
     
 }

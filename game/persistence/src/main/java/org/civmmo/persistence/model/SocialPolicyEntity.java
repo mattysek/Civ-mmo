@@ -3,6 +3,7 @@ package org.civmmo.persistence.model;
 import org.civmmo.model.*;
 import java.io.Serializable;
 import java.lang.String;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -24,9 +25,9 @@ public class SocialPolicyEntity extends SocialPolicy implements Serializable {
 	private int baseCost;
 	
 	@OneToMany(mappedBy="currentPolicy", cascade = CascadeType.ALL)
-	private List<Civilization> currentlyUsedBy;
+	private List<CivilizationEntity> currentlyUsedBy;
 	@OneToMany(mappedBy="socialPolicy", cascade = CascadeType.ALL)
-	private List<Policy> policies;
+	private List<PolicyEntity> policies;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -54,15 +55,15 @@ public class SocialPolicyEntity extends SocialPolicy implements Serializable {
 		this.id = id;
 	}
 	public List<Civilization> getCurrentlyUsedBy() {
-		return currentlyUsedBy;
+		return new ArrayList<>(currentlyUsedBy);
 	}
 	public void setCurrentlyUsedBy(List<Civilization> currentlyUsedBy) {
-		this.currentlyUsedBy = currentlyUsedBy;
+		this.currentlyUsedBy = (List<CivilizationEntity>)(List<?>)currentlyUsedBy;
 	}
 	public List<Policy> getPolicies() {
-		return policies;
+		return new ArrayList<>(policies);
 	}
 	public void setPolicies(List<Policy> policies) {
-		this.policies = policies;
+		this.policies = (List<PolicyEntity>)(List<?>)policies;
 	}
 }

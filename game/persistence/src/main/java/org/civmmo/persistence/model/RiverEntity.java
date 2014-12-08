@@ -2,6 +2,7 @@ package org.civmmo.persistence.model;
 
 import org.civmmo.model.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -21,7 +22,7 @@ public class RiverEntity extends River implements Serializable {
 	private long id;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<Tile> tiles;
+	private List<TileEntity> tiles;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -36,9 +37,9 @@ public class RiverEntity extends River implements Serializable {
 		this.id = id;
 	}
 	public List<Tile> getTiles() {
-		return tiles;
+		return new ArrayList<>(tiles);
 	}
 	public void setTiles(List<Tile> tiles) {
-		this.tiles = tiles;
+		this.tiles = (List<TileEntity>)(List<?>)tiles;
 	}
 }

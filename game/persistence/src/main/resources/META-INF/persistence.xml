@@ -27,32 +27,32 @@
         <!-- The datasource is deployed as WEB-INF/test-ds.xml, 
         you can find it in the source at src/test/resources/test-ds.xml -->
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
-        <class>org.civmmo.persistence.model.Region</class>
-        <class>org.civmmo.persistence.model.Civilization</class>
-        <class>org.civmmo.persistence.model.SocialPolicy</class>
-        <class>org.civmmo.persistence.model.Policy</class>
-        <class>org.civmmo.persistence.model.Technology</class>
-        <class>org.civmmo.persistence.model.City</class>
-        <class>org.civmmo.persistence.model.Tile</class>
-        <class>org.civmmo.persistence.model.TerrainType</class>
-        <class>org.civmmo.persistence.model.CombatModifier</class>
-        <class>org.civmmo.persistence.model.TerrainFeature</class>
-        <class>org.civmmo.persistence.model.TradeRoute</class>
-        <class>org.civmmo.persistence.model.River</class>
-        <class>org.civmmo.persistence.model.Resource</class>
-        <class>org.civmmo.persistence.model.Improvement</class>
-        <class>org.civmmo.persistence.model.Unit</class>
-        <class>org.civmmo.persistence.model.Promotion</class>
-        <class>org.civmmo.persistence.model.UnitType</class>
-        <class>org.civmmo.persistence.model.Action</class>
-        <class>org.civmmo.persistence.model.Building</class>
+        <class>org.civmmo.persistence.model.RegionEntity</class>
+        <class>org.civmmo.persistence.model.CivilizationEntity</class>
+        <class>org.civmmo.persistence.model.SocialPolicyEntity</class>
+        <class>org.civmmo.persistence.model.PolicyEntity</class>
+        <class>org.civmmo.persistence.model.TechnologyEntity</class>
+        <class>org.civmmo.persistence.model.CityEntity</class>
+        <class>org.civmmo.persistence.model.TileEntity</class>
+        <class>org.civmmo.persistence.model.TerrainTypeEntity</class>
+        <class>org.civmmo.persistence.model.CombatModifierEntity</class>
+        <class>org.civmmo.persistence.model.TerrainFeatureEntity</class>
+        <class>org.civmmo.persistence.model.TradeRouteEntity</class>
+        <class>org.civmmo.persistence.model.RiverEntity</class>
+        <class>org.civmmo.persistence.model.ResourceEntity</class>
+        <class>org.civmmo.persistence.model.ImprovementEntity</class>
+        <class>org.civmmo.persistence.model.UnitEntity</class>
+        <class>org.civmmo.persistence.model.PromotionEntity</class>
+        <class>org.civmmo.persistence.model.UnitTypeEntity</class>
+        <class>org.civmmo.persistence.model.ActionEntity</class>
+        <class>org.civmmo.persistence.model.BuildingEntity</class>
         <properties>
             <!-- Properties for Hibernate -->
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/ormtest"/>
             <property name="hibernate.connection.username" value="postgres"/>
             <property name="hibernate.connection.password" value="postgres"/>
-            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
             <property name="hibernate.show_sql" value="false" />
             <property name="hibernate.transaction.jta.platform" 
                            value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
