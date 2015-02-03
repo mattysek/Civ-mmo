@@ -26,6 +26,7 @@ public class CityDto implements Serializable {
 	private List<TradeRouteDto> tradeRoutesTo;
 	private List<TileDto> visibleTiles;
 	private List<TileDto> controledTiles;
+        private List<UnitDto> units;
 	private List<TileDto> workedTiles;
 	private UnitDto currentlyConstructedUnit;
 	
@@ -119,6 +120,12 @@ public class CityDto implements Serializable {
 	public void setCurrentlyConstructedBuilding(
 			BuildingDto currentlyConstructedBuilding) {
 		this.currentlyConstructedBuilding = currentlyConstructedBuilding;
+	}
+        public List<UnitDto> getAttackedBy() {
+		return units;
+	}
+	public void setAttackedBy(List<UnitDto> units) {
+		this.units = units;
 	}
 	public List<BuildingDto> getConstructedBuildings() {
 		return constructedBuildings;
