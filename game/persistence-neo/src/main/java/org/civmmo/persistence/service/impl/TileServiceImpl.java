@@ -60,4 +60,20 @@ public class TileServiceImpl extends BaseService implements TileService {
             return tile.isRiver();
         });
     }
+
+    @Override
+    public List<TileDto> getUnusedTilesOfRegion(long regionId) {
+        return runInTransaction(() -> 
+                repository.getUnusedTilesOfRegion(regionId).stream()
+                          .map(t -> translate(t,START_LEVEL))
+                          .collect(Collectors.toList()));
+    }
+
+    @Override
+    public List<TileDto> getvisibleTilesOfRegionforCiv(long regionId, long civId) {
+        return runInTransaction(() -> 
+                repository.getvisibleTilesOfRegionforCiv(regionId,civId).stream()
+                          .map(t -> translate(t,START_LEVEL))
+                          .collect(Collectors.toList()));
+    }
 }

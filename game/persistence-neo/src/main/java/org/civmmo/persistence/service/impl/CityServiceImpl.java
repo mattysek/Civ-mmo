@@ -9,6 +9,7 @@ import org.civmmo.contracts.model.TileDto;
 import org.civmmo.contracts.model.UnitDto;
 import org.civmmo.contracts.services.persistence.CityService;
 import org.civmmo.model.City;
+import org.civmmo.model.Unit;
 import org.civmmo.persistence.repository.CityRepository;
 import org.civmmo.persistence.repository.impl.CityRepositoryImpl;
 
@@ -106,10 +107,15 @@ public class CityServiceImpl extends BaseService implements CityService {
     }
 
     @Override
-    public void attackUnit(long cityId, UnitDto unit) {
+    public void getAttackedByUnit(long cityId, UnitDto unit) {
         runInTransaction(() -> {
             City city = repository.getById(cityId);
-            city.attackUnit(translate(unit,TranslateOption.GetById));
+            Unit unitentity = translate(unit,TranslateOption.GetById);
+            //city.attackUnit(unitentity);
+            if(unitentity.getHitPoints() > 0)
+            {
+                city.getAttackedByUnit(unitentity);
+            }
         });
     }
 
@@ -119,6 +125,14 @@ public class CityServiceImpl extends BaseService implements CityService {
             City city = repository.getById(cityId);
             city.computeWealthGrowth();
             return translate(city,START_LEVEL);
+        });
+    }
+
+    @Override
+    public void attackUnit(long cityId, UnitDto unit) {
+        runInTransaction(() -> {
+            City city = repository.getById(cityId);
+            city.attackUnit(translate(unit,TranslateOption.GetById));
         });
     }
 }

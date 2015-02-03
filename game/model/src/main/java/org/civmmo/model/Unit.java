@@ -53,11 +53,15 @@ public abstract class Unit {
     public abstract int getExperience();
 
     public abstract void setExperience(int experience);
-
+    
     public abstract Tile getPosition();
 
     public abstract void setPosition(Tile position);
 
+    public abstract List<Unit> getAttackedBy();
+
+    public abstract void setAttackedBy(List<Unit> units);
+    
     public abstract List<UnitType> getTypes();
 
     public abstract void setTypes(List<UnitType> types);
@@ -84,10 +88,6 @@ public abstract class Unit {
 
     public void attackUnit(Unit unit) {
         unit.setHitPoints(unit.getHitPoints() - this.getCombatStrength());
-    }
-
-    public void attackCity(City city) {
-        city.setHitPoints(city.getHitPoints() - this.getCombatStrength());
     }
 
     public void promoteUnit(Promotion promotion) {

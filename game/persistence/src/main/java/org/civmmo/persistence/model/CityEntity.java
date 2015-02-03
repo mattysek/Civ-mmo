@@ -53,6 +53,8 @@ public class CityEntity extends City implements Serializable {
 	private List<TileEntity> workedTiles;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private UnitEntity currentlyConstructedUnit;
+        @ManyToMany(cascade = CascadeType.ALL)
+	private List<UnitEntity> units;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -196,6 +198,16 @@ public class CityEntity extends City implements Serializable {
 	public void setCurrentlyConstructedUnit(Unit currentlyConstructedUnit) {
 		this.currentlyConstructedUnit = (UnitEntity)currentlyConstructedUnit;
 	}
+
+    @Override
+    public List<Unit> getAttackedBy() {
+        return new ArrayList<>(units);
+    }
+
+    @Override
+    public void setAttackedBy(List<Unit> units) {
+        this.units = (List<UnitEntity>)(List<?>)units;
+    }
 	
    
 }

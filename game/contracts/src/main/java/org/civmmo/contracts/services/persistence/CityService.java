@@ -11,6 +11,7 @@ public interface CityService extends CRUDService<CityDto>,QueryableService<CityD
   void controlTile(long cityId, TileDto tile);
   void workTile(long cityId, TileDto tile);
   void attackUnit(long cityId, UnitDto unit);
+  void getAttackedByUnit(long cityId, UnitDto unit);
   CityDto computeWealthGrowth(long cityId);
 
 }

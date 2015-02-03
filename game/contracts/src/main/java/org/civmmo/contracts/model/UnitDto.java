@@ -17,6 +17,7 @@ public class UnitDto implements Serializable {
 	private int experience;
         
 	private TileDto position;
+        private List<UnitDto> units;
 	private List<UnitTypeDto> types;
 	private List<PromotionDto> promotions;
 	private List<CityDto> currentlyConstructedBy;
@@ -94,6 +95,12 @@ public class UnitDto implements Serializable {
 	}
 	public void setPosition(TileDto position) {
 		this.position = position;
+	}
+        public List<UnitDto> getAttackedBy() {
+		return units;
+	}
+	public void setAttackedBy(List<UnitDto> units) {
+		this.units = units;
 	}
 	public List<UnitTypeDto> getTypes() {
 		return types;

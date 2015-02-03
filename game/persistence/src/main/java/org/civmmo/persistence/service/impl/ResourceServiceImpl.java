@@ -33,21 +33,21 @@ public class ResourceServiceImpl extends BaseService implements ResourceService 
     }
 
     public ResourceDto getById(Long id) {
-        return translate(repository.getById(id));
+        return translate(repository.getById(id),START_LEVEL);
     }
     
     public List<ResourceDto> getAll() {
-        return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
+        return repository.getAll().stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList());
     }
     
     @Override
     public List<ResourceDto> testGetListNativeQuery(String query) {
         return repository.getResultListOfNativeQuery(query)
-                         .stream().map(e -> translate(e)).collect(Collectors.toList());     
+                         .stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList());     
     }
 
     @Override
     public ResourceDto testGetSingleNativeQuery(String query) {
-        return translate(repository.getSingleResultOfNativeQuery(query)); 
+        return translate(repository.getSingleResultOfNativeQuery(query),START_LEVEL); 
     }
 }

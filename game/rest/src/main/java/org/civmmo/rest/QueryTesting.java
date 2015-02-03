@@ -9,7 +9,7 @@ import javax.ws.rs.core.Response;
 import org.civmmo.contracts.services.persistence.*;
 import org.civmmo.rest.utils.Query;
 
-@Path("/")
+//@Path("/")
 public class QueryTesting {
     
     // <editor-fold defaultstate="collapsed" desc="services">

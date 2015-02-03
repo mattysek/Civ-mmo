@@ -39,22 +39,22 @@ public class CivilizationServiceImpl extends BaseService implements Civilization
     }
 
     public CivilizationDto getById(Long id) {
-        return translate(repository.getById(id));
+        return translate(repository.getById(id),START_LEVEL);
     }
     
     public List<CivilizationDto> getAll() {
-        return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
+        return repository.getAll().stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList());
     }
     
     @Override
     public List<CivilizationDto> testGetListNativeQuery(String query) {
         return repository.getResultListOfNativeQuery(query)
-                         .stream().map(e -> translate(e)).collect(Collectors.toList());     
+                         .stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList());     
     }
 
     @Override
     public CivilizationDto testGetSingleNativeQuery(String query) {
-        return translate(repository.getSingleResultOfNativeQuery(query)); 
+        return translate(repository.getSingleResultOfNativeQuery(query),START_LEVEL); 
     }
 
     @Override
@@ -121,7 +121,7 @@ public class CivilizationServiceImpl extends BaseService implements Civilization
     public List<ResourceDto> getVisibleResources(long civilizationId) {
         Civilization civilization = repository.getById(civilizationId);
         return civilization.getVisibleResources().stream()
-                           .map(r -> translate(r))
+                           .map(r -> translate(r,START_LEVEL))
                            .collect(Collectors.toList());
     }
 
@@ -129,7 +129,7 @@ public class CivilizationServiceImpl extends BaseService implements Civilization
     public List<TileDto> getVisibleTilesFromRegion(long civilizationId, RegionDto region) {
         Civilization civilization = repository.getById(civilizationId);
         return civilization.getVisibleTilesFromRegion(translate(region)).stream()
-                           .map(r -> translate(r))
+                           .map(r -> translate(r,START_LEVEL))
                            .collect(Collectors.toList());
     }
 
@@ -138,5 +138,10 @@ public class CivilizationServiceImpl extends BaseService implements Civilization
         Civilization civilization = repository.getById(civlilizationId);
         civilization.computeWealthChange();
         repository.update(civilization);
+    }
+
+    @Override
+    public CivilizationDto getByCityId(long cityId) {
+        return translate(repository.getByCityId(cityId),START_LEVEL);
     }
 }

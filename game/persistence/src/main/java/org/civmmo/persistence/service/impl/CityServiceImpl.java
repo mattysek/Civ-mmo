@@ -37,22 +37,22 @@ public class CityServiceImpl extends BaseService implements CityService {
     }
     
     public CityDto getById(Long id) {
-        return translate(repository.getById(id));
+        return translate(repository.getById(id),START_LEVEL);
     }
     
     public List<CityDto> getAll() {
-        return repository.getAll().stream().map(e -> translate(e)).collect(Collectors.toList());
+        return repository.getAll().stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList());
     }
     
     @Override
     public List<CityDto> testGetListNativeQuery(String query) {
         return repository.getResultListOfNativeQuery(query)
-                         .stream().map(e -> translate(e)).collect(Collectors.toList());     
+                         .stream().map(e -> translate(e,START_LEVEL)).collect(Collectors.toList());     
     }
 
     @Override
     public CityDto testGetSingleNativeQuery(String query) {
-        return translate(repository.getSingleResultOfNativeQuery(query)); 
+        return translate(repository.getSingleResultOfNativeQuery(query),START_LEVEL); 
     }
 
     @Override
@@ -96,19 +96,31 @@ public class CityServiceImpl extends BaseService implements CityService {
         city.workTile(translate(tile));
         repository.update(city);
     }
+    
+    @Override
+    public CityDto computeWealthGrowth(long cityId) {
+        City city = repository.getById(cityId);
+        city.computeWealthGrowth();
+        repository.update(city);
+        return translate(city,START_LEVEL);
+    }
+
+    @Override
+    public void getAttackedByUnit(long cityId, UnitDto unit) {
+        City city = repository.getById(cityId);
+        Unit unitentity = translate(unit);
+        //city.attackUnit(unitentity);
+        if(unitentity.getHitPoints() > 0)
+        {
+             city.getAttackedByUnit(unitentity);
+        }
+        repository.update(city);
+    }
 
     @Override
     public void attackUnit(long cityId, UnitDto unit) {
         City city = repository.getById(cityId);
         city.attackUnit(translate(unit));
         repository.update(city);
-    }
-
-    @Override
-    public CityDto computeWealthGrowth(long cityId) {
-        City city = repository.getById(cityId);
-        city.computeWealthGrowth();
-        repository.update(city);
-        return translate(city);
     }
 }

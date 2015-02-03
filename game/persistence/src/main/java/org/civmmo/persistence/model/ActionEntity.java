@@ -25,9 +25,9 @@ public class ActionEntity extends Action implements Serializable {
 	private String name;
 	
 	@OneToMany(mappedBy="afectedAction", cascade = CascadeType.ALL)
-	private List<CombatModifierEntity> combatModifiers;
+	private List<CombatModifierEntity> combatModifiers = new ArrayList();
 	@ManyToMany(cascade = CascadeType.ALL)
-	private List<UnitTypeEntity> aplicableTo;
+	private List<UnitTypeEntity> aplicableTo = new ArrayList();
 	
 	private static final long serialVersionUID = 1L;
 

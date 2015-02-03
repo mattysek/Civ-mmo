@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface CivilizationService extends CRUDService<CivilizationDto>,QueryableService<CivilizationDto> {
 
+  CivilizationDto getByCityId(long cityId);
   void unlockPolicy(long civilizationId, PolicyDto policy);
   void useSocialPolicy(long civilizationId, SocialPolicyDto socialPolicy);
   void ownSocialPolicy(long civilizationId, SocialPolicyDto socialPolicy);

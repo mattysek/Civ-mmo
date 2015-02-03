@@ -264,4 +264,14 @@ public class CityNode extends City {
     public void setCurrentlyConstructedUnit(Unit currentlyConstructedUnit) {
         NodeHelper.setSingleRelationship(node, currentlyConstructedUnit, RelationshipType.CITY_UNIT, e -> ((UnitNode)e).getUnderlyingNode());
     }
+
+    @Override
+    public List<Unit> getAttackedBy() {
+        return NodeHelper.getRelationship(node,RelationshipType.CITY_UNIT_2,e -> new UnitNode(e));
+    }
+
+    @Override
+    public void setAttackedBy(List<Unit> units) {
+        NodeHelper.setRelationship(node,units,RelationshipType.CITY_UNIT_2, e -> ((UnitNode)e).getUnderlyingNode());
+    }
 }

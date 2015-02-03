@@ -138,7 +138,26 @@
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                 </configuration>
-            </plugin>
+            </plugin><!--
+    <plugin>
+  <groupId>org.codehaus.enunciate</groupId>
+  <artifactId>maven-enunciate-plugin</artifactId>
+  <version>1.29</version>
+  <executions>
+    <execution>
+      <goals>
+        <goal>assemble</goal>
+      </goals>
+    </execution>
+  </executions>
+  <dependencies>
+      <dependency>
+      <groupId>org.codehaus.enunciate</groupId>
+      <artifactId>enunciate-xml</artifactId>
+      <version>1.29</version>
+    </dependency>
+  </dependencies>
+</plugin>-->
         </plugins>
     </build>
 

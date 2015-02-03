@@ -46,6 +46,8 @@ public class UnitEntity extends Unit implements Serializable {
 	private List<TileEntity> visibleTiles;
 	@ManyToMany(cascade = CascadeType.ALL)
 	private List<TileEntity> controledTiles;
+        @ManyToMany(cascade = CascadeType.ALL)
+	private List<UnitEntity> units;
 	
 	private static final long serialVersionUID = 1L;
 
@@ -157,5 +159,15 @@ public class UnitEntity extends Unit implements Serializable {
 	public void setControledTiles(List<Tile> controledTiles) {
 		this.controledTiles = (List<TileEntity>)(List<?>)controledTiles;
 	}
+
+    @Override
+    public List<Unit> getAttackedBy() {
+        return new ArrayList<>(units);
+    }
+
+    @Override
+    public void setAttackedBy(List<Unit> units) {
+        this.units = (List<UnitEntity>)(List<?>)units;
+    }
 	
 }

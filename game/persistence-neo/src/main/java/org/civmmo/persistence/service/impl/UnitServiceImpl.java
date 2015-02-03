@@ -66,14 +66,6 @@ public class UnitServiceImpl extends BaseService implements UnitService {
     }
 
     @Override
-    public void attackCity(long unitId, CityDto city) {
-        runInTransaction(() -> {
-            Unit unit = repository.getById(unitId);
-            unit.attackCity(translate(city, TranslateOption.GetById));
-        });
-    }
-
-    @Override
     public void promoteUnit(long unitId, PromotionDto promotion) {
         runInTransaction(() -> {
             Unit unit = repository.getById(unitId);

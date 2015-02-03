@@ -70,6 +70,10 @@ public abstract class City {
 
     public abstract void setCurrentlyConstructedBuilding(Building currentlyConstructedBuilding);
 
+    public abstract List<Unit> getAttackedBy();
+
+    public abstract void setAttackedBy(List<Unit> units);
+    
     public abstract List<Building> getConstructedBuildings();
 
     public abstract void setConstructedBuildings(List<Building> constructedBuildings);
@@ -143,6 +147,10 @@ public abstract class City {
 
     public void attackUnit(Unit unit) {
         unit.setHitPoints(unit.getHitPoints() - this.getCitizens());
+    }
+    
+    public void getAttackedByUnit(Unit unit) {
+        this.setHitPoints(this.getHitPoints() - unit.getCombatStrength());
     }
 
     public void computeWealthGrowth() {

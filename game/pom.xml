@@ -30,7 +30,6 @@
     <modules>
   	<module>persistence-jpa</module>
         <module>contracts</module>
-        <module>logparser</module>
 	<module>civmmo</module>
         <module>model</module>
         <module>persistence-neo</module>

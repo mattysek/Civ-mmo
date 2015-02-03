@@ -213,4 +213,14 @@ public class UnitNode extends Unit{
     public void setControledTiles(List<Tile> controledTiles) {
         NodeHelper.setRelationship(node,controledTiles,RelationshipType.TILE_UNIT_3, e -> ((TileNode)e).getUnderlyingNode());
     }
+    
+    @Override
+    public List<Unit> getAttackedBy() {
+        return NodeHelper.getRelationship(node,RelationshipType.UNIT_UNIT,e -> new UnitNode(e));
+    }
+
+    @Override
+    public void setAttackedBy(List<Unit> units) {
+        NodeHelper.setRelationship(node,units,RelationshipType.UNIT_UNIT, e -> ((UnitNode)e).getUnderlyingNode());
+    }
 }

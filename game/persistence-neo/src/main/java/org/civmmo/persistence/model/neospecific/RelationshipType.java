@@ -23,6 +23,7 @@ public enum RelationshipType implements org.neo4j.graphdb.RelationshipType {
     CITY_TILE_4, // worked tiles
     CITY_CIVILIZATION, //OWNED BY
     CITY_UNIT, //CURRENTLY CONSTRUCTED
+    CITY_UNIT_2, //ATTACKED BY
     CITY_TRADE_ROUTE, //from
     CITY_TRADE_ROUTE_2, //to
     CIVILIZATION_SOCIAL_POLICY, //current cosial policy
@@ -56,4 +57,5 @@ public enum RelationshipType implements org.neo4j.graphdb.RelationshipType {
     TILE_UNIT_2, //visible for units
     TILE_UNIT_3, //controlled by unit
     UNIT_UNIT_TYPE,
+    UNIT_UNIT,//attacked by
 }

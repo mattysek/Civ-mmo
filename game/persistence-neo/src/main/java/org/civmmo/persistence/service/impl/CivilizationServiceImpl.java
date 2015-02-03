@@ -153,4 +153,9 @@ public class CivilizationServiceImpl extends BaseService implements Civilization
             civilization.computeWealthChange();
         });
     }
+
+    @Override
+    public CivilizationDto getByCityId(long cityId) {
+        return runInTransaction(() -> translate(repository.getByCityId(cityId),START_LEVEL));
+    }
 }
